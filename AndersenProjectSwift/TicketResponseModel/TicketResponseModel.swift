@@ -11,8 +11,8 @@ import AlamofireObjectMapper
 import Alamofire
 import ObjectMapper
 
-class TicketResponseModel: NSObject, Mappable {
-
+class TicketResponseModel: Mappable {
+    
     var quotedId: Int?
     
     var minPrice: Int?
@@ -58,15 +58,13 @@ class TicketResponseModel: NSObject, Mappable {
 
 }
 
-func fetchResponse() {
+func fetchResponse(ticketRequestModel: TicketRequestModel) {
     
     UIApplication.shared.isNetworkActivityIndicatorVisible = true
     
-    let tempUrl = "https://api.darksky.net/forecast/3db85b34ac149a829f4409281b5ba2ba/37.8267,-122.4233"
-    let ticketRequestParams = TicketRequestModel()
-    let ticketRequestParamsJSON = ticketRequestParams.toJSON()
+    let resultUrl = ticketRequestModel.asURLRequest(ticketRequestModel:)
     
-    Alamofire.request(tempUrl).validate(statusCode: [200]).responseObject { (response: DataResponse<TicketResponseModel>) in
+    Alamofire.request(resultUrl as! URLRequestConvertible).validate(statusCode: [200]).responseObject { (response: DataResponse<TicketResponseModel>) in
         
         switch response.result {
         case.success:

@@ -7,10 +7,12 @@
 //
 
 import UIKit
-import AlamofireObjectMapper
 import ObjectMapper
+import Alamofire
 
-class TicketRequestModel:  Mappable {
+class TicketRequestModel: Mappable, URLRequestConvertible {
+    
+    let baseUrl = "http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/"
     
     var country: String?
     var currency: String?
@@ -20,11 +22,9 @@ class TicketRequestModel:  Mappable {
     var outboundPartialDate: String?
     var inboundPartialDate: String?
     
-    init() {
-        
-    }
+    
     required init?(map: Map) {
-        
+       
     }
     
     func mapping(map: Map) {
@@ -38,6 +38,15 @@ class TicketRequestModel:  Mappable {
         inboundPartialDate <- map ["inboundDate"]
         
         }
+    
+    func asURLRequest(ticketRequestModel: TicketRequestModel) throws -> URLRequest {
+        
+        let params: Parameters = ticketRequestModel.toJSON()
+        let tempUrl = try baseUrl.asURL()
+        let urlRequest = URLRequest(url: tempUrl)
+        
+        return try URLEncoding.default.encode(urlRequest, with: params)
     }
-
+    
+}
 
