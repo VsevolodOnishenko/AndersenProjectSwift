@@ -31,8 +31,8 @@ class TicketResponseModel: NSObject, Mappable {
     var outboundDepartureDate: String?
     var inboundDepartureDate: String?
     
-    required init(map: Map) {
-    
+    required init?(map: Map) {
+
     }
     
     func mapping(map: Map) {
@@ -62,14 +62,20 @@ func fetchResponse() {
     
     UIApplication.shared.isNetworkActivityIndicatorVisible = true
     
-    let apiUrl = "http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/FR/eur/en-US/uk/us/anytime/anytime?apikey=prtl6749387986743898559646983194"
+    let tempUrl = "https://api.darksky.net/forecast/3db85b34ac149a829f4409281b5ba2ba/37.8267,-122.4233"
+    let ticketRequestParams = TicketRequestModel()
+    let ticketRequestParamsJSON = ticketRequestParams.toJSON()
     
-    Alamofire.request(apiUrl).validate(statusCode: [200]).responseObject { (response: DataResponse<TicketResponseModel>) in
+    Alamofire.request(tempUrl).validate(statusCode: [200]).responseObject { (response: DataResponse<TicketResponseModel>) in
         
-        let ticketResponse = response.result.value
-        print("Some Info")
-        print(ticketResponse!)
-        
+        switch response.result {
+        case.success:
+            let ticketResponse = response.result.value
+            print("Some Info")
+            print(ticketResponse!)
+        case.failure:
+            print("Error" + (response.debugDescription))
+        }
     }
 }
 

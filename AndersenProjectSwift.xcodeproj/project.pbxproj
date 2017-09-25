@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		079801C672A8229474DEA3C8 /* Pods_AndersenProjectSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15D22AE8B5DE6B02A04825F /* Pods_AndersenProjectSwift.framework */; };
+		FA08C5A61F78322C00451364 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA08C5A51F78322C00451364 /* background.jpg */; };
 		FA1B51531F77D7FC00BD5B99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B51521F77D7FC00BD5B99 /* AppDelegate.swift */; };
 		FA1B51551F77D7FC00BD5B99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B51541F77D7FC00BD5B99 /* ViewController.swift */; };
 		FA1B51581F77D7FC00BD5B99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA1B51561F77D7FC00BD5B99 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 		76BC58B14645D580BD915938 /* Pods-AndersenProjectSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AndersenProjectSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AndersenProjectSwift/Pods-AndersenProjectSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		B15D22AE8B5DE6B02A04825F /* Pods_AndersenProjectSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AndersenProjectSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE4AF94BDEB20C9F3AEE6DAF /* Pods-AndersenProjectSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AndersenProjectSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-AndersenProjectSwift/Pods-AndersenProjectSwift.release.xcconfig"; sourceTree = "<group>"; };
+		FA08C5A51F78322C00451364 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background.jpg; path = ../../../Downloads/background.jpg; sourceTree = "<group>"; };
 		FA1B514F1F77D7FC00BD5B99 /* AndersenProjectSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AndersenProjectSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1B51521F77D7FC00BD5B99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA1B51541F77D7FC00BD5B99 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				FA1B515E1F77D7FD00BD5B99 /* LaunchScreen.storyboard */,
 				FA1B51611F77D7FD00BD5B99 /* Info.plist */,
 				FA1B51591F77D7FD00BD5B99 /* AndersenProjectSwift.xcdatamodeld */,
+				FA08C5A51F78322C00451364 /* background.jpg */,
 			);
 			path = AndersenProjectSwift;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				TargetAttributes = {
 					FA1B514E1F77D7FC00BD5B99 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 8AW2L5X873;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -168,6 +172,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA08C5A61F78322C00451364 /* background.jpg in Resources */,
 				FA1B51601F77D7FD00BD5B99 /* LaunchScreen.storyboard in Resources */,
 				FA1B515D1F77D7FD00BD5B99 /* Assets.xcassets in Resources */,
 				FA1B51581F77D7FC00BD5B99 /* Main.storyboard in Resources */,
@@ -369,7 +374,9 @@
 			baseConfigurationReference = 76BC58B14645D580BD915938 /* Pods-AndersenProjectSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8AW2L5X873;
 				INFOPLIST_FILE = AndersenProjectSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = A.AndersenProjectSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -382,7 +389,9 @@
 			baseConfigurationReference = CE4AF94BDEB20C9F3AEE6DAF /* Pods-AndersenProjectSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8AW2L5X873;
 				INFOPLIST_FILE = AndersenProjectSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = A.AndersenProjectSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
