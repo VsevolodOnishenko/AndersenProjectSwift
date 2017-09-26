@@ -31,12 +31,14 @@ class TicketResponseModel: Mappable {
     var outboundDepartureDate: String?
     var inboundDepartureDate: String?
     
-    required init?(map: Map) {
-
+    
+    
+    convenience required init?(map: Map) {
+        self.init()
     }
     
     func mapping(map: Map) {
-    
+        
         quotedId <- map ["Quotes.QuoteId"]
         
         minPrice <- map ["Quotes.MinPrice"]
@@ -55,27 +57,27 @@ class TicketResponseModel: Mappable {
         outboundDepartureDate <- map ["Quotes.OutboundLeg.DepartureDate"]
         inboundDepartureDate <- map ["Quotes.InboundLeg.DepartureDate"]
     }
-
-}
-
-func fetchResponse(ticketRequestModel: TicketRequestModel) {
     
-    UIApplication.shared.isNetworkActivityIndicatorVisible = true
-    
-    let resultUrl = ticketRequestModel.asURLRequest(ticketRequestModel:)
-    
-    Alamofire.request(resultUrl as! URLRequestConvertible).validate(statusCode: [200]).responseObject { (response: DataResponse<TicketResponseModel>) in
+    func fetchResponse(ticketRequestModel: URLRequestConvertible) {
         
-        switch response.result {
-        case.success:
-            let ticketResponse = response.result.value
-            print("Some Info")
-            print(ticketResponse!)
-        case.failure:
-            print("Error" + (response.debugDescription))
+        // UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        Alamofire.request(ticketRequestModel).validate(statusCode: [200]).responseObject { (response: DataResponse<TicketResponseModel>) in
+            
+            switch response.result {
+            case.success:
+                let ticketResponse = response.result.value
+                print("Some Info")
+                print(ticketResponse!)
+            case.failure:
+                print("Error" + (response.debugDescription))
+            }
         }
     }
+    
 }
+
+
 
 
 

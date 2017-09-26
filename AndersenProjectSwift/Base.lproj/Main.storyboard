@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Ticket Places-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AndersenProjectSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ticketPlaces" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="TicketPlaces" customModule="AndersenProjectSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -66,19 +66,24 @@
                         <barButtonItem key="leftBarButtonItem" title="Назад" id="ouo-fJ-x96"/>
                         <barButtonItem key="rightBarButtonItem" title="Далее" id="DVy-8o-bi8">
                             <connections>
-                                <segue destination="rBE-NZ-MTt" kind="show" id="Jfz-cn-a7o"/>
+                                <segue destination="rBE-NZ-MTt" kind="show" identifier="toTicketDates" id="Jfz-cn-a7o"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="destinationPlaceTextField" destination="nwL-FG-s2J" id="QKT-St-JNQ"/>
+                        <outlet property="inputLabel" destination="9FW-sN-ut5" id="03l-cW-1wG"/>
+                        <outlet property="originPlaceTextField" destination="Drd-rb-iCv" id="v8p-mH-ZSw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1006" y="-278"/>
         </scene>
-        <!--View Controller-->
+        <!--Ticket Dates-->
         <scene sceneID="aDu-AN-E6e">
             <objects>
-                <viewController id="rBE-NZ-MTt" customClass="ViewController" customModule="AndersenProjectSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ticketDates" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rBE-NZ-MTt" customClass="TicketDates" customModule="AndersenProjectSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jBD-Sr-j0S"/>
                         <viewControllerLayoutGuide type="bottom" id="e7P-S7-W8F"/>
@@ -135,6 +140,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Искать"/>
+                                <connections>
+                                    <segue destination="q7d-iK-QFx" kind="show" identifier="toResultList" id="snW-Sa-oVM"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -158,15 +166,22 @@
                     <navigationItem key="navigationItem" id="DhT-6h-1M2">
                         <barButtonItem key="leftBarButtonItem" title="Назад" id="Mof-nZ-tXV"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dateDepartureLabel" destination="2Tx-IB-Omt" id="4r4-bT-nqj"/>
+                        <outlet property="dateInboundLabel" destination="tmd-g3-tYa" id="yUE-iM-KTI"/>
+                        <outlet property="departureDatePicker" destination="Iga-hi-xac" id="agW-E1-C05"/>
+                        <outlet property="inboundDatePicker" destination="mcL-zz-oro" id="VLQ-Yf-rAh"/>
+                        <outlet property="searchButton" destination="HO5-c1-WqR" id="dPH-kT-TAG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jt0-le-hna" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1908" y="-276"/>
+            <point key="canvasLocation" x="1858" y="-278"/>
         </scene>
-        <!--View Controller-->
+        <!--Ticket Type-->
         <scene sceneID="1Pq-Hx-sif">
             <objects>
-                <viewController id="1ph-TB-hUs" customClass="ViewController" customModule="AndersenProjectSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ticketType" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1ph-TB-hUs" customClass="TicketType" customModule="AndersenProjectSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4jv-20-wgm"/>
                         <viewControllerLayoutGuide type="bottom" id="5H6-7h-Ri2"/>
@@ -196,7 +211,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Прямой"/>
                                 <connections>
-                                    <segue destination="NHY-cu-ZZj" kind="show" id="fJl-Jn-j8d"/>
+                                    <segue destination="NHY-cu-ZZj" kind="show" identifier="directType" id="1wk-EL-5LE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wn4-PZ-HTd">
@@ -207,7 +222,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Туда-обратно"/>
                                 <connections>
-                                    <segue destination="NHY-cu-ZZj" kind="show" id="jag-Ka-ssh"/>
+                                    <segue destination="NHY-cu-ZZj" kind="show" identifier="roundType" id="Zfl-v0-6mX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -230,6 +245,11 @@
                             <constraint firstItem="wn4-PZ-HTd" firstAttribute="top" secondItem="TEb-yi-ej2" secondAttribute="bottom" constant="8" id="l6j-Bf-abQ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="directButton" destination="TEb-yi-ej2" id="OBb-gN-zzo"/>
+                        <outlet property="roundButton" destination="wn4-PZ-HTd" id="7Sk-On-MmQ"/>
+                        <outlet property="selectLabel" destination="kH9-yr-VwM" id="xVr-Kg-03X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WXC-bD-qOY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -253,11 +273,145 @@
             </objects>
             <point key="canvasLocation" x="119" y="-276"/>
         </scene>
+        <!--Ticket Search Results-->
+        <scene sceneID="9mY-68-Wmr">
+            <objects>
+                <viewController storyboardIdentifier="ticketSearchResults" useStoryboardIdentifierAsRestorationIdentifier="YES" id="q7d-iK-QFx" customClass="TicketSearchResults" customModule="AndersenProjectSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wit-9e-Yhj"/>
+                        <viewControllerLayoutGuide type="bottom" id="suG-Qs-r3j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="40i-4T-t6P">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.64999997615814209" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="8Ot-UY-3ro">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Результаты поиска:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXz-Um-AWB">
+                                <rect key="frame" x="17" y="72" width="203" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="Ota-qq-Zq5"/>
+                                    <constraint firstAttribute="width" constant="203" id="xhx-qD-VrF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="87" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UCq-Ih-E0v">
+                                <rect key="frame" x="17" y="121" width="341" height="526"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="526" id="2Jq-wv-Z9h"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="90" id="0vc-mB-lt5" customClass="TicketResultCell" customModule="AndersenProjectSwift" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="341" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0vc-mB-lt5" id="pGv-bF-OwR">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="89.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Quote" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFw-h6-S93">
+                                                    <rect key="frame" x="8" y="5" width="50" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Curr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewi-AS-I7O">
+                                                    <rect key="frame" x="66" y="5" width="37" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="departureTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PlD-5b-3YH">
+                                                    <rect key="frame" x="51" y="32" width="97" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="outPlaneIcon" translatesAutoresizingMaskIntoConstraints="NO" id="mCC-Ix-tlL">
+                                                    <rect key="frame" x="8" y="32" width="40" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="departurePlace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeC-qp-oq2">
+                                                    <rect key="frame" x="51" y="51" width="97" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="flyArrow" translatesAutoresizingMaskIntoConstraints="NO" id="wlP-Qy-pDs">
+                                                    <rect key="frame" x="150" y="32" width="40" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="arrivalTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaf-km-kkI">
+                                                    <rect key="frame" x="196" y="32" width="89" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="inPlaneIcon" translatesAutoresizingMaskIntoConstraints="NO" id="N2l-lx-HkJ">
+                                                    <rect key="frame" x="293" y="32" width="40" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="arrivalPlace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjh-oN-upc">
+                                                    <rect key="frame" x="196" y="51" width="89" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="arrivalPlaceLabel" destination="qjh-oN-upc" id="tr8-60-OtM"/>
+                                            <outlet property="arrivalTimeLabel" destination="aaf-km-kkI" id="w2K-IC-rvh"/>
+                                            <outlet property="currencyCodeLabel" destination="ewi-AS-I7O" id="oNi-LW-fNV"/>
+                                            <outlet property="departurePlaceLabel" destination="yeC-qp-oq2" id="yLg-8H-ooi"/>
+                                            <outlet property="departureTimeLabel" destination="PlD-5b-3YH" id="DEp-J3-35p"/>
+                                            <outlet property="flyArrowIcon" destination="wlP-Qy-pDs" id="5Vr-WK-FrH"/>
+                                            <outlet property="inPlaneIcon" destination="N2l-lx-HkJ" id="sk2-Bo-ukU"/>
+                                            <outlet property="outPlaneIcon" destination="mCC-Ix-tlL" id="LY3-vn-RMk"/>
+                                            <outlet property="quoteLabel" destination="pFw-h6-S93" id="m6i-9t-blb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="XXz-Um-AWB" firstAttribute="leading" secondItem="40i-4T-t6P" secondAttribute="leading" constant="17" id="F3Z-wN-q7O"/>
+                            <constraint firstAttribute="trailing" secondItem="8Ot-UY-3ro" secondAttribute="trailing" id="Pse-8g-pb4"/>
+                            <constraint firstItem="UCq-Ih-E0v" firstAttribute="leading" secondItem="40i-4T-t6P" secondAttribute="leading" constant="17" id="iFQ-Gl-qq6"/>
+                            <constraint firstAttribute="trailing" secondItem="UCq-Ih-E0v" secondAttribute="trailing" constant="17" id="lmE-eD-G9Y"/>
+                            <constraint firstItem="suG-Qs-r3j" firstAttribute="top" secondItem="8Ot-UY-3ro" secondAttribute="bottom" id="ot6-u9-Hdr"/>
+                            <constraint firstItem="UCq-Ih-E0v" firstAttribute="top" secondItem="XXz-Um-AWB" secondAttribute="bottom" constant="8" id="si5-Xl-egp"/>
+                            <constraint firstItem="8Ot-UY-3ro" firstAttribute="top" secondItem="40i-4T-t6P" secondAttribute="top" id="t5c-Qt-Lwx"/>
+                            <constraint firstItem="XXz-Um-AWB" firstAttribute="top" secondItem="wit-9e-Yhj" secondAttribute="bottom" constant="8" id="wzy-40-s9i"/>
+                            <constraint firstItem="8Ot-UY-3ro" firstAttribute="leading" secondItem="40i-4T-t6P" secondAttribute="leading" id="yIZ-Vs-3b8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="wGl-e2-L2E">
+                        <barButtonItem key="leftBarButtonItem" title="Назад" id="PRM-6z-FUd"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1h9-Nn-cjv" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2724" y="-279.31034482758622"/>
+        </scene>
     </scenes>
     <resources>
         <image name="background" width="1080" height="1920"/>
+        <image name="flyArrow" width="24" height="24"/>
+        <image name="inPlaneIcon" width="24" height="24"/>
+        <image name="outPlaneIcon" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jag-Ka-ssh"/>
+        <segue reference="1wk-EL-5LE"/>
     </inferredMetricsTieBreakers>
 </document>

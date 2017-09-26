@@ -6,9 +6,7 @@
 //  Copyright © 2017 Andersen. All rights reserved.
 //
 
-import UIKit
-
-class TicketUIModel: NSObject {
+class TicketUIModel {
 
     var price: Int?
     var currency: String?

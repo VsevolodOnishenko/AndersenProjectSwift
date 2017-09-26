@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let object: [String: Any] = [:]
+        let response = TicketResponseModel(JSON: object)
+        let request = TicketRequestModel(JSON: object)
+        response?.fetchResponse(ticketRequestModel: (request?.asURLRequest())!)
         
         return true
     }
