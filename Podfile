@@ -7,9 +7,9 @@ target 'AndersenProjectSwift' do
 
   # Pods for AndersenProjectSwift
 
+pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
 pod 'AlamofireObjectMapper', '~> 4.0'
-pod 'Alamofire', '~> 4.5'
 pod 'ObjectMapper', '~> 2.2'
-
+pod 'Alamofire', '~> 4.5'
 
 end

@@ -10,17 +10,17 @@ import UIKit
 
 class TicketResultCell: UITableViewCell {
     
-    @IBOutlet weak var quoteLabel: UILabel!
-    @IBOutlet weak var currencyCodeLabel: UILabel!
+    @IBOutlet private weak var quoteLabel: UILabel!
+    @IBOutlet private weak var currencyCodeLabel: UILabel!
     
-    @IBOutlet weak var departureTimeLabel: UILabel!
-    @IBOutlet weak var departurePlaceLabel: UILabel!
-    @IBOutlet weak var arrivalTimeLabel: UILabel!
-    @IBOutlet weak var arrivalPlaceLabel: UILabel!
+    @IBOutlet private weak var departureTimeLabel: UILabel!
+    @IBOutlet private weak var departurePlaceLabel: UILabel!
+    @IBOutlet private weak var arrivalTimeLabel: UILabel!
+    @IBOutlet private weak var arrivalPlaceLabel: UILabel!
     
-    @IBOutlet weak var outPlaneIcon: UIImageView!
-    @IBOutlet weak var flyArrowIcon: UIImageView!
-    @IBOutlet weak var inPlaneIcon: UIImageView!
+    @IBOutlet private weak var outPlaneIcon: UIImageView!
+    @IBOutlet private weak var flyArrowIcon: UIImageView!
+    @IBOutlet private weak var inPlaneIcon: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,4 +33,8 @@ class TicketResultCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    ///perform segue to detail description
+    
 }
+
+

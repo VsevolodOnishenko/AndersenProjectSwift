@@ -7,18 +7,23 @@
 //
 
 import UIKit
+import Alamofire
 
 class TicketPlaces: ViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var inputLabel: UILabel!
-    @IBOutlet weak var originPlaceTextField: UITextField!
-    @IBOutlet weak var destinationPlaceTextField: UITextField!
+    @IBOutlet private weak var inputLabel: UILabel!
+    @IBOutlet private weak var originPlaceTextField: UITextField!
+    @IBOutlet private weak var destinationPlaceTextField: UITextField!
+    
+    var ticketRequestModel = TicketRequestModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         originPlaceTextField.delegate = self
         destinationPlaceTextField.delegate = self
+        
+        print(ticketRequestModel.directType?.description ?? "none") // check for pass direct or round
         
     }
     
@@ -52,11 +57,15 @@ class TicketPlaces: ViewController, UITextFieldDelegate {
     func checkTextField(_ textField: UITextField) {
         
         if textField.text == "" {
-            let alert = UIAlertController(title: "Ошибка", message: "Вы ничего не ввели.", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Ошибка", message: "Заполните все поля", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "ОК", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    func autocompleteTextField(_ textField: UITextField) {
         
+      //later implement autocomplete
     }
     
     // MARK: - Navigation
@@ -66,10 +75,16 @@ class TicketPlaces: ViewController, UITextFieldDelegate {
         checkTextField(originPlaceTextField)
         checkTextField(destinationPlaceTextField)
         
-        if (segue.identifier == "toTicketDates") {
-            //здесь запомнить данные о введных городах и проверка на пустоту полей
-        }
+        //ticketRequestModel.originPlace = originPlaceTextField.text
+        //ticketRequestModel.destinationPlace = destinationPlaceTextField.text
         
+        if segue.identifier == "toTicketDates" {
+            
+            //pass data to next controller
+            let ticketDatesViewController = segue.destination as! TicketDates
+            ticketDatesViewController.ticketRequestModel.directType = ticketRequestModel.directType
+            ticketDatesViewController.ticketRequestModel.originPlace = originPlaceTextField.text
+            ticketDatesViewController.ticketRequestModel.destinationPlace = destinationPlaceTextField.text
+        }
     }
-    
 }

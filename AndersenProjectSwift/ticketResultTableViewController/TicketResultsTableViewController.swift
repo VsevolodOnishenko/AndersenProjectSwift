@@ -1,32 +1,44 @@
 //
-//  TicketSearchResults.swift
+//  ticketResultsTableViewController.swift
 //  AndersenProjectSwift
 //
-//  Created by macbook on 26.09.17.
+//  Created by macbook on 28.09.17.
 //  Copyright © 2017 Andersen. All rights reserved.
 //
 
 import UIKit
 
-class TicketSearchResults: ViewController {
-   
-    @IBOutlet private weak var ticketResultsTableView: UITableView!
-    
-    var ticketRequestModel = TicketRequestModel()
-    
+class TicketResultsTableViewController: UITableViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(ticketRequestModel.toJSON())//check pass data
-        
-        // Do any additional setup after loading the view.
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ticketResultCell", for: indexPath)
+        
+        // Configure the cell...
+        
+        return cell
+    }
+
     /*
     // MARK: - Navigation
 

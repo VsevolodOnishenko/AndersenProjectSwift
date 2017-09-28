@@ -60,8 +60,6 @@ class TicketResponseModel: Mappable {
     
     func fetchResponse(ticketRequestModel: URLRequestConvertible) {
         
-        // UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        
         Alamofire.request(ticketRequestModel).validate(statusCode: [200]).responseObject { (response: DataResponse<TicketResponseModel>) in
             
             switch response.result {

@@ -10,20 +10,30 @@ import UIKit
 
 class TicketDates: ViewController {
 
-    @IBOutlet weak var dateDepartureLabel: UILabel!
+    @IBOutlet private weak var dateDepartureLabel: UILabel!
     
-    @IBOutlet weak var departureDatePicker: UIDatePicker!
+    @IBOutlet private weak var departureDatePicker: UIDatePicker!
     
-    @IBOutlet weak var dateInboundLabel: UILabel!
+    @IBOutlet private weak var dateInboundLabel: UILabel!
     
-    @IBOutlet weak var inboundDatePicker: UIDatePicker!
+    @IBOutlet private weak var inboundDatePicker: UIDatePicker!
     
-    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet private weak var searchButton: UIButton!
+    
+    var ticketRequestModel = TicketRequestModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        departureDatePicker.minimumDate = Date() //Today's date
+        departureDatePicker.maximumDate = Date().addingTimeInterval(60 * 60 * 24 * 90)
+        inboundDatePicker.minimumDate = Date()
+        inboundDatePicker.maximumDate = Date().addingTimeInterval(60 * 60 * 24 * 180)
+        
+        print(ticketRequestModel.directType?.description ?? "none") // check for pass data
+        print(ticketRequestModel.originPlace!)
+        print(ticketRequestModel.destinationPlace!)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,13 +46,16 @@ class TicketDates: ViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if (segue.identifier == "toResultList") {
-            //запоминаем даты, пока что оставил константы
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = DateFormatter.Style.medium
             
-            let departureDate = dateFormatter.string(from: departureDatePicker.date)
-            let inboundDate = dateFormatter.string(from: inboundDatePicker.date)
-            print((departureDate), "\n", (inboundDate))
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            
+            let ticketResultsViewController = segue.destination as! TicketSearchResults
+            ticketResultsViewController.ticketRequestModel.directType = ticketRequestModel.directType
+            ticketResultsViewController.ticketRequestModel.originPlace = ticketRequestModel.originPlace
+            ticketResultsViewController.ticketRequestModel.destinationPlace = ticketRequestModel.destinationPlace
+            ticketResultsViewController.ticketRequestModel.outboundPartialDate = dateFormatter.string(from: departureDatePicker.date)
+            ticketResultsViewController.ticketRequestModel.inboundPartialDate = dateFormatter.string(from: inboundDatePicker.date)
             
         }
         

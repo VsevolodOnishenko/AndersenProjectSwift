@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AlamofireNetworkActivityIndicator
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let response = TicketResponseModel(JSON: object)
         let request = TicketRequestModel(JSON: object)
         response?.fetchResponse(ticketRequestModel: (request?.asURLRequest())!)
+        
+        NetworkActivityIndicatorManager.shared.isEnabled = true
+        NetworkActivityIndicatorManager.shared.startDelay = 2.0
         
         return true
     }
