@@ -10,7 +10,7 @@ import UIKit
 import ObjectMapper
 import Alamofire
 
-class TicketRequestModel: Mappable, URLRequestConvertible {
+class TicketRequestModel: Mappable {
     
     var baseUrl = "http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/"
     
@@ -40,6 +40,12 @@ class TicketRequestModel: Mappable, URLRequestConvertible {
         
     }
     
+    
+    
+}
+
+extension TicketRequestModel: URLRequestConvertible {
+    
     func asURLRequest() -> URLRequest { //прочитать про throws
         
         let tempUrl = try! baseUrl.asURL()
@@ -49,6 +55,5 @@ class TicketRequestModel: Mappable, URLRequestConvertible {
         return try! URLEncoding.default.encode(urlRequest, with: params)
         
     }
-    
 }
 

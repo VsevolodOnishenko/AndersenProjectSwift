@@ -20,10 +20,19 @@ class TicketDates: ViewController {
     
     @IBOutlet private weak var searchButton: UIButton!
     
-    var ticketRequestModel = TicketRequestModel()
+    let ticketRequestModel = TicketRequestModel()
+    let dateFormatter = DateFormatter()
+    let segueIdentifier = "toResultList"
+    let dateFormat = "yyyy-MM-dd"
+    var ticketResultsViewController = TicketSearchResults()
+    
+    let alert = UIAlertController(title: "Ошибка", message: "Дата возвращения должна быть позже даты отправления", preferredStyle: UIAlertControllerStyle.alert)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        hideInboundDatePicker(ticketRequestModel)
 
         departureDatePicker.minimumDate = Date() //Today's date
         departureDatePicker.maximumDate = Date().addingTimeInterval(60 * 60 * 24 * 90)
@@ -41,16 +50,37 @@ class TicketDates: ViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func hideInboundDatePicker(_: TicketRequestModel) {
+        
+        if ticketRequestModel.directType == true {
+            inboundDatePicker.isHidden = true
+            dateInboundLabel.isHidden = true
+        }
+    }
+    
+    func checkInboundDate (inboundDate: Date, outboundDate: Date) {
+        
+        if outboundDate > inboundDate {
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if (segue.identifier == "toResultList") {
+        if (segue.identifier == segueIdentifier) {
             
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateFormatter.dateFormat = dateFormat
             
-            let ticketResultsViewController = segue.destination as! TicketSearchResults
+            if ticketRequestModel.directType == false {
+            
+            checkInboundDate(inboundDate: inboundDatePicker.date, outboundDate: departureDatePicker.date)
+                
+            }
+            
+            ticketResultsViewController = segue.destination as! TicketSearchResults
             ticketResultsViewController.ticketRequestModel.directType = ticketRequestModel.directType
             ticketResultsViewController.ticketRequestModel.originPlace = ticketRequestModel.originPlace
             ticketResultsViewController.ticketRequestModel.destinationPlace = ticketRequestModel.destinationPlace

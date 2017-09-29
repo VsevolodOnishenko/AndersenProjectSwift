@@ -10,6 +10,10 @@ import UIKit
 
 class TicketType: ViewController {
     
+    var ticketPlacesNavCon = UINavigationController()
+    var ticketPlacesViewCon = TicketPlaces()
+    let segueDirectType = "directType"
+    let segueRoundType = "roundType"
     
     @IBOutlet private weak var selectLabel: UILabel!
     @IBOutlet private weak var directButton: UIButton!
@@ -29,13 +33,13 @@ class TicketType: ViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let ticketPlacesNavCon = segue.destination as? UINavigationController
-        let ticketPlacesViewCon = ticketPlacesNavCon?.viewControllers.first as! TicketPlaces
+        ticketPlacesNavCon = segue.destination as! UINavigationController
+        ticketPlacesViewCon = ticketPlacesNavCon.viewControllers.first as! TicketPlaces
         
-        if (segue.identifier == "directType") {
+        if (segue.identifier == segueDirectType) {
             ticketPlacesViewCon.ticketRequestModel.directType = true
         }
-        if (segue.identifier == "roundType") {
+        if (segue.identifier == segueRoundType) {
             ticketPlacesViewCon.ticketRequestModel.directType = false
         }
     }
