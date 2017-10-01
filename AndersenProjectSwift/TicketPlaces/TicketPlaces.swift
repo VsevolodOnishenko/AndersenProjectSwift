@@ -15,6 +15,8 @@ class TicketPlaces: ViewController, UITextFieldDelegate {
     @IBOutlet fileprivate weak var originPlaceTextField: UITextField!
     @IBOutlet fileprivate weak var destinationPlaceTextField: UITextField!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     let ticketRequestModel = TicketRequestModel()
     var ticketDatesViewController = TicketDates()
     let segueIdentifierTicketDates = "toTicketDates"
@@ -78,7 +80,16 @@ extension TicketPlaces {
         return true
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+            let p = CGPoint(x: 0, y: self.view.frame.height * 0.2) //вынести все эти дейсвтия в отдельный класс и реализовать протокол, который бы выполнял все действия с текс филд
+            scrollView.setContentOffset(p, animated: true)
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        let p = CGPoint(x: 0, y: 0)
+        scrollView.setContentOffset(p, animated: true)
         
         switch textField {
             
