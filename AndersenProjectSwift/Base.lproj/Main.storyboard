@@ -483,7 +483,7 @@
         <!--Buy Ticket Screen-->
         <scene sceneID="foG-eh-wOU">
             <objects>
-                <viewController storyboardIdentifier="buyTicketScreen" id="mkK-lR-jXG" customClass="BuyTicketScreen" customModule="AndersenProjectSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="buyTicketScreen" modalPresentationStyle="overCurrentContext" id="mkK-lR-jXG" customClass="BuyTicketScreen" customModule="AndersenProjectSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="76C-DA-kxa"/>
                         <viewControllerLayoutGuide type="bottom" id="kzy-KU-gip"/>
@@ -513,7 +513,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.78247259774560118" green="0.91647074872092249" blue="1" alpha="0.57456656678082196" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.62184314175888411" green="0.81169032197284086" blue="1" alpha="0.30958369006849318" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="IOW-0H-8Gs" firstAttribute="top" secondItem="hX3-5w-UJs" secondAttribute="top" id="6it-Q4-6Jk"/>
                                     <constraint firstAttribute="trailing" secondItem="I1n-vB-gfN" secondAttribute="trailing" constant="60" id="Fue-05-ecm"/>
@@ -525,6 +525,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kzy-KU-gip" firstAttribute="top" secondItem="hX3-5w-UJs" secondAttribute="bottom" id="Xtz-JZ-kAP"/>
                             <constraint firstAttribute="trailing" secondItem="hX3-5w-UJs" secondAttribute="trailing" id="qf2-Dg-XCB"/>
