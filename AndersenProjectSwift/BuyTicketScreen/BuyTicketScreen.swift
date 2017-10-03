@@ -10,30 +10,22 @@ import UIKit
 
 class BuyTicketScreen: UIViewController {
 
-    @IBOutlet var popUpView: UIView!
-    @IBOutlet weak var buyMessageLabel: UILabel!
-    
-    @IBAction func crossButtonPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
+    @IBOutlet weak var buyTicketView: UIView!
+    @IBOutlet weak var buyTicketMessageLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.clear
-        
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.extraLight)
-        let blurView = UIVisualEffectView(effect: blurEffect)
-        blurView.frame = self.view.bounds
-        
-        blurView.backgroundColor = UIColor.clear
-        self.view.addSubview(blurView)
-        blurView.addSubview(popUpView)
-        
+        buyTicketView.layer.cornerRadius = 15.0
+        buyTicketView.layer.masksToBounds = true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func closeButtonPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 }

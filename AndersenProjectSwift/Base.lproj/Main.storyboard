@@ -447,9 +447,7 @@
                                 <rect key="frame" x="276" y="72" width="91" height="30"/>
                                 <state key="normal" title="TEST POPUP"/>
                                 <connections>
-                                    <segue destination="mkK-lR-jXG" kind="popoverPresentation" popoverAnchorView="3qo-1V-Fui" id="vFv-Lg-R8B">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <segue destination="s5c-aN-zkD" kind="presentation" id="8He-tU-MWU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -481,70 +479,67 @@
             <point key="canvasLocation" x="2720.8000000000002" y="-276.61169415292358"/>
         </scene>
         <!--Buy Ticket Screen-->
-        <scene sceneID="foG-eh-wOU">
+        <scene sceneID="Sog-En-8eN">
             <objects>
-                <viewController storyboardIdentifier="buyTicketScreen" modalPresentationStyle="overCurrentContext" id="mkK-lR-jXG" customClass="BuyTicketScreen" customModule="AndersenProjectSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="s5c-aN-zkD" customClass="BuyTicketScreen" customModule="AndersenProjectSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="76C-DA-kxa"/>
-                        <viewControllerLayoutGuide type="bottom" id="kzy-KU-gip"/>
+                        <viewControllerLayoutGuide type="top" id="TRT-dL-2bx"/>
+                        <viewControllerLayoutGuide type="bottom" id="oHo-Jb-iVD"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="dHl-YP-5az">
+                    <view key="view" contentMode="scaleToFill" id="mjd-ir-aDY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hX3-5w-UJs">
-                                <rect key="frame" x="0.0" y="573" width="375" height="94"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7A7-ve-AxR">
+                                <rect key="frame" x="39" y="259" width="297" height="149"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Поздравляем! Вы купили билет." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1n-vB-gfN">
-                                        <rect key="frame" x="59" y="30" width="256" height="35"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fli-uL-5kA">
+                                        <rect key="frame" x="0.0" y="94.5" width="297" height="54.5"/>
+                                        <color key="backgroundColor" red="0.64897626537916175" green="0.86720349071818958" blue="1" alpha="0.45000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Закрыть"/>
+                                        <connections>
+                                            <action selector="closeButtonPressed:" destination="s5c-aN-zkD" eventType="touchUpInside" id="I9c-PR-5xs"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Спасибо за покупку билета!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbr-jM-e6C">
+                                        <rect key="frame" x="13" y="37" width="271" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOW-0H-8Gs">
-                                        <rect key="frame" x="345" y="0.0" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="tCi-8T-yIe"/>
-                                            <constraint firstAttribute="height" constant="30" id="tL4-id-inh"/>
-                                        </constraints>
-                                        <state key="normal" image="closeButton"/>
-                                        <connections>
-                                            <action selector="crossButtonPressed:" destination="mkK-lR-jXG" eventType="touchUpInside" id="9o7-Aa-OVi"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.62184314175888411" green="0.81169032197284086" blue="1" alpha="0.30958369006849318" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.87966013354854866" green="0.97900156768937052" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="IOW-0H-8Gs" firstAttribute="top" secondItem="hX3-5w-UJs" secondAttribute="top" id="6it-Q4-6Jk"/>
-                                    <constraint firstAttribute="trailing" secondItem="I1n-vB-gfN" secondAttribute="trailing" constant="60" id="Fue-05-ecm"/>
-                                    <constraint firstItem="I1n-vB-gfN" firstAttribute="top" secondItem="hX3-5w-UJs" secondAttribute="top" constant="30" id="ZHw-9S-FUF"/>
-                                    <constraint firstAttribute="height" constant="94" id="ZWi-g7-bjI"/>
-                                    <constraint firstAttribute="trailing" secondItem="IOW-0H-8Gs" secondAttribute="trailing" id="cg2-RK-df3"/>
-                                    <constraint firstAttribute="bottom" secondItem="I1n-vB-gfN" secondAttribute="bottom" constant="29" id="s26-IW-XFD"/>
-                                    <constraint firstItem="I1n-vB-gfN" firstAttribute="leading" secondItem="hX3-5w-UJs" secondAttribute="leading" constant="59" id="wPC-Z0-IBa"/>
+                                    <constraint firstItem="Fli-uL-5kA" firstAttribute="top" secondItem="lbr-jM-e6C" secondAttribute="bottom" constant="37" id="3bZ-Tn-am7"/>
+                                    <constraint firstAttribute="trailing" secondItem="lbr-jM-e6C" secondAttribute="trailing" constant="13" id="M88-Zi-4hV"/>
+                                    <constraint firstItem="Fli-uL-5kA" firstAttribute="leading" secondItem="7A7-ve-AxR" secondAttribute="leading" id="Mcd-JK-L3Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fli-uL-5kA" secondAttribute="trailing" id="TP0-iQ-G6V"/>
+                                    <constraint firstAttribute="bottom" secondItem="Fli-uL-5kA" secondAttribute="bottom" id="Wb6-fw-EcM"/>
+                                    <constraint firstItem="lbr-jM-e6C" firstAttribute="top" secondItem="7A7-ve-AxR" secondAttribute="top" constant="37" id="qjt-0Y-JlR"/>
+                                    <constraint firstItem="lbr-jM-e6C" firstAttribute="leading" secondItem="7A7-ve-AxR" secondAttribute="leading" constant="13" id="wYg-xF-Zr6"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="kzy-KU-gip" firstAttribute="top" secondItem="hX3-5w-UJs" secondAttribute="bottom" id="Xtz-JZ-kAP"/>
-                            <constraint firstAttribute="trailing" secondItem="hX3-5w-UJs" secondAttribute="trailing" id="qf2-Dg-XCB"/>
-                            <constraint firstItem="hX3-5w-UJs" firstAttribute="leading" secondItem="dHl-YP-5az" secondAttribute="leading" id="xYf-Cg-McL"/>
+                            <constraint firstItem="7A7-ve-AxR" firstAttribute="top" secondItem="TRT-dL-2bx" secondAttribute="bottom" constant="239" id="GOq-i9-I1y"/>
+                            <constraint firstItem="oHo-Jb-iVD" firstAttribute="top" secondItem="7A7-ve-AxR" secondAttribute="bottom" constant="259" id="HNZ-GV-IUb"/>
+                            <constraint firstAttribute="trailing" secondItem="7A7-ve-AxR" secondAttribute="trailing" constant="39" id="UpL-K9-pzG"/>
+                            <constraint firstItem="7A7-ve-AxR" firstAttribute="leading" secondItem="mjd-ir-aDY" secondAttribute="leading" constant="39" id="ifx-z6-4Hy"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="buyMessageLabel" destination="I1n-vB-gfN" id="tiN-SY-tF8"/>
-                        <outlet property="popUpView" destination="hX3-5w-UJs" id="WMk-sR-mrH"/>
+                        <outlet property="buyTicketMessageLabel" destination="lbr-jM-e6C" id="KXa-m8-2LV"/>
+                        <outlet property="buyTicketView" destination="7A7-ve-AxR" id="HvM-zl-Es1"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bKG-lr-ksC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cPp-nP-6Pq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3696.8000000000002" y="-275.71214392803603"/>
+            <point key="canvasLocation" x="3589.5999999999999" y="-278.41079460269867"/>
         </scene>
     </scenes>
     <resources>
         <image name="background" width="1080" height="1920"/>
-        <image name="closeButton" width="24" height="24"/>
         <image name="flyArrow" width="24" height="24"/>
         <image name="inPlaneIcon" width="24" height="24"/>
         <image name="outPlaneIcon" width="24" height="24"/>
