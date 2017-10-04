@@ -19,11 +19,8 @@ class TicketPlaces: ViewController {
     
     let ticketRequestModel = TicketRequestModel()
     var ticketDatesViewController = TicketDates()
+    
     let segueIdentifierTicketDates = "toTicketDates"
-    
-    var activeTextField: UITextField?
-    
-    let alert = UIAlertController(title: "Ошибка", message: "Заполните все поля", preferredStyle: UIAlertControllerStyle.alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +34,13 @@ class TicketPlaces: ViewController {
         deregisterFromKeyboardNotifications()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        registerForKeyboardNotifications()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    //TODO: Сделать отдельную функцию в которой будем вызывать все проверки текстовых полей
     
     //MARK: Keyboard notifications
     
@@ -60,7 +60,7 @@ class TicketPlaces: ViewController {
     
     func keyboardWillShow(notification: NSNotification) {
         
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
                 
                 let coeff = keyboardSize.height * 0.4  //буду двигать вью при редактировании обоих полей, так выглядит симпотичнее
@@ -70,7 +70,7 @@ class TicketPlaces: ViewController {
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0 {
                 
                 let coeff = keyboardSize.height * 0.4
@@ -79,9 +79,20 @@ class TicketPlaces: ViewController {
         }
     }
     
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let handler: () -> () = {
+            
+            let alert = UIAlertController(title: "Ошибка", message: "Заполните все поля", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        originPlaceTextField.checkTextField(completion: handler)
+        destinationPlaceTextField.checkTextField(completion: handler)
         
         if segue.identifier == segueIdentifierTicketDates {
             
@@ -94,23 +105,5 @@ class TicketPlaces: ViewController {
     }
 }
 
-    // MARK: - TextFieldDelegate
-
-extension TicketPlaces: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        registerForKeyboardNotifications()
-        return true
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        activeTextField = textField
-    }
-}
 
 

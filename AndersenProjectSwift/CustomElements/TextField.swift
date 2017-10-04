@@ -8,28 +8,31 @@
 
 import UIKit
 
-protocol TextFieldProtocol {
-    func checkTextField(_ textField: TextField)
-    func autocompleteTextField(_ textField: TextField)
-}
-
 class TextField: UITextField {
-    
-}
-
-// MARK: TextFieldProtocol
-
-extension TextField: TextFieldProtocol {
     
     func autocompleteTextField(_ textField: TextField) {
         //add some actions later
     }
     
-    func checkTextField(_ textField: TextField) {
+    func checkTextField(completion: () -> ()) {
         
-        if textField.text == "" {
-            
+        if self.text == "" {
+            completion()
         }
     }
     
+}
+
+// MARK: - TextFieldDelegate
+
+extension TicketPlaces: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
 }
