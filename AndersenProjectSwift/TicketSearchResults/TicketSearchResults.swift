@@ -13,12 +13,10 @@ class TicketSearchResults: ViewController {
     
     @IBOutlet weak var ticketResultsTableView: UITableView!
     
-    var ticketRequestModel = TicketRequestModel()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(ticketRequestModel.toJSON())//check pass data
+        //print(ticketRequestModel.toJSON())//check pass data
         
         
         // Do any additional setup after loading the view.
@@ -41,22 +39,25 @@ class TicketSearchResults: ViewController {
     
 }
 
-// TODO: Implement this 
+// TODO: Implement this
 
 extension TicketSearchResults: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    /*
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-     <#code#>
-     }
-     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     <#code#>
-     }
-     */
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1 //count of tickets
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = ticketResultsTableView.dequeueReusableCell(withIdentifier: "ticketResultCell", for: indexPath)
+        
+        return cell
+    }
+    
     
     
     
