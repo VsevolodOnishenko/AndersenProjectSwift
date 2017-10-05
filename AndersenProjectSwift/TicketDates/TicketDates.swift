@@ -9,90 +9,74 @@
 import UIKit
 
 class TicketDates: ViewController {
-
+    
     @IBOutlet private weak var dateDepartureLabel: UILabel!
-    
-    @IBOutlet private weak var departureDatePicker: UIDatePicker!
-    
+    @IBOutlet private weak var departureDatePicker: DatePicker!
     @IBOutlet private weak var dateInboundLabel: UILabel!
-    
-    @IBOutlet private weak var inboundDatePicker: UIDatePicker!
-    
+    @IBOutlet private weak var inboundDatePicker: DatePicker!
     @IBOutlet private weak var searchButton: UIButton!
     
     let ticketRequestModel = TicketRequestModel()
-    let dateFormatter = DateFormatter()
     let segueIdentifier = "toResultList"
-    let dateFormat = "yyyy-MM-dd"
     var ticketResultsViewController = TicketSearchResults()
     
-    let alert = UIAlertController(title: "Ошибка", message: "Дата возвращения должна быть позже даты отправления", preferredStyle: UIAlertControllerStyle.alert)
-    
+    let dateFormat = "yyyy-MM-dd"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        hideInboundDatePicker(ticketRequestModel)
-
-        departureDatePicker.minimumDate = Date() //Today's date
-        departureDatePicker.maximumDate = Date().addingTimeInterval(60 * 60 * 24 * 90)
-        inboundDatePicker.minimumDate = Date()
-        inboundDatePicker.maximumDate = Date().addingTimeInterval(60 * 60 * 24 * 180)
+        let minDate = Date()
+        let departureTimeInterval: TimeInterval = (60 * 60 * 24 * 90) //90 days from today
+        let inboundTimeInterval: TimeInterval = (60 * 60 * 24 * 180) //180 days from today
         
-        print(ticketRequestModel.directType?.description ?? "none") // check for pass data
-        print(ticketRequestModel.originPlace!)
-        print(ticketRequestModel.destinationPlace!)
-        
+        //setup datepickers on view
+        departureDatePicker.setupDate(minDate: minDate, timeInterval: departureTimeInterval)
+        inboundDatePicker.setupDate(minDate: minDate, timeInterval: inboundTimeInterval)
+        inboundDatePicker.hideInboundDatePicker(ticketRequestModel: ticketRequestModel, label: dateInboundLabel)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func hideInboundDatePicker(_: TicketRequestModel) {
+    func createAlert(titleText: String, messageText: String) {
         
-        if ticketRequestModel.directType == true {
-            inboundDatePicker.isHidden = true
-            dateInboundLabel.isHidden = true
-        }
+        let alert = UIAlertController(title: titleText, message: messageText, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
-    func checkInboundDate (inboundDate: Date, outboundDate: Date) {
+    func checkDatePicker() {
         
-        if outboundDate > inboundDate {
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+        let handler: () -> () = {
+            self.createAlert(titleText: "Ошибка", messageText: "Дата отправления должна быть не позже даты возвращения")
         }
-    }
-    
-    func dataPickerValidation() {
+        inboundDatePicker.compareDatePickers(departureDate: departureDatePicker.date, completion: handler)
     }
     
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        checkDatePicker()
+        
         if (segue.identifier == segueIdentifier) {
             
-            dateFormatter.dateFormat = dateFormat
-            
-            if ticketRequestModel.directType == false {
-            
-            checkInboundDate(inboundDate: inboundDatePicker.date, outboundDate: departureDatePicker.date)
-                
-            }
-            
-            ticketResultsViewController = segue.destination as! TicketSearchResults
-            ticketResultsViewController.ticketRequestModel.directType = ticketRequestModel.directType
-            ticketResultsViewController.ticketRequestModel.originPlace = ticketRequestModel.originPlace
-            ticketResultsViewController.ticketRequestModel.destinationPlace = ticketRequestModel.destinationPlace
-            ticketResultsViewController.ticketRequestModel.outboundPartialDate = dateFormatter.string(from: departureDatePicker.date)
-            ticketResultsViewController.ticketRequestModel.inboundPartialDate = dateFormatter.string(from: inboundDatePicker.date)
+            /*
+             ticketResultsViewController = segue.destination as! TicketSearchResults
+             ticketResultsViewController.ticketRequestModel.directType = ticketRequestModel.directType
+             ticketResultsViewController.ticketRequestModel.originPlace = ticketRequestModel.originPlace
+             ticketResultsViewController.ticketRequestModel.destinationPlace = ticketRequestModel.destinationPlace
+             ticketResultsViewController.ticketRequestModel.outboundPartialDate = dateFormatter.string(from: departureDatePicker.date)
+             ticketResultsViewController.ticketRequestModel.inboundPartialDate = dateFormatter.string(from: inboundDatePicker.date)
+             */
             
         }
         
     }
     
-
+    
 }

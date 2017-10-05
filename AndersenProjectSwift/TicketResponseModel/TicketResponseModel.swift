@@ -11,12 +11,14 @@ import AlamofireObjectMapper
 import Alamofire
 import ObjectMapper
 
+//TODO: Change classes for new api
+
 class TicketResponseModel: Mappable {
     
-    var quotedId: Int?
+    var id: Int?
     
-    var minPrice: Int?
-    var currency: String?
+    var price: Int?
+    //var currency: String?
     
     var originPlace: String?
     var originPlaceId: Int?
@@ -39,10 +41,10 @@ class TicketResponseModel: Mappable {
     
     func mapping(map: Map) {
         
-        quotedId <- map ["Quotes.QuoteId"]
+        id <- map ["data.destination"] //ask about it
         
-        minPrice <- map ["Quotes.MinPrice"]
-        currency <- map ["Currencies.Code"]
+        price <- map ["Quotes.MinPrice"]
+       // currency <- map ["Currencies.Code"]
         
         originPlace <- map ["Places.Name"]
         originPlaceId <- map ["Quotes.OutboundLeg.OriginId"]

@@ -10,15 +10,18 @@ import UIKit
 import ObjectMapper
 import Alamofire
 
+//TODO: Change classes for new api
+
 class TicketRequestModel: Mappable {
     
-    var baseUrl = "http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/"
+    let baseUrl = "http://api.travelpayouts.com/v1/prices/cheap"
+    let accessToken = "074a2187e916545621a1b3aaec618272"
     
     var directType: Bool?
     
-    var country: String?
+    //var country: String?
     var currency: String?
-    var locale: String?
+    //var locale: String?
     var originPlace: String?
     var destinationPlace: String?
     var outboundPartialDate: String?
@@ -30,23 +33,21 @@ class TicketRequestModel: Mappable {
     
     func mapping(map: Map) {
         
-        country <- map ["country"]
+        //country <- map ["country"]
         currency <- map ["currency"]
-        locale <- map ["locale"]
-        originPlace <- map ["originPlace"]
-        destinationPlace <- map ["destinationPlace"]
+        //locale <- map ["locale"]
+        originPlace <- map ["origin"]
+        destinationPlace <- map ["destination"]
         outboundPartialDate <- map ["outboundDate"]
         inboundPartialDate <- map ["inboundDate"]
         
     }
     
-    
-    
 }
 
 extension TicketRequestModel: URLRequestConvertible {
     
-    func asURLRequest() -> URLRequest { //прочитать про throws
+    func asURLRequest() -> URLRequest { 
         
         let tempUrl = try! baseUrl.asURL()
         let urlRequest = URLRequest(url: tempUrl)

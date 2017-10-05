@@ -14,7 +14,6 @@ class TicketPlaces: ViewController {
     @IBOutlet private weak var inputLabel: UILabel!
     @IBOutlet fileprivate weak var originPlaceTextField: TextField!
     @IBOutlet fileprivate weak var destinationPlaceTextField: TextField!
-    
     @IBOutlet weak var scrollView: UIScrollView!
     
     let ticketRequestModel = TicketRequestModel()
@@ -31,7 +30,7 @@ class TicketPlaces: ViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        deregisterFromKeyboardNotifications()
+        unregisterFromKeyboardNotifications()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,7 +49,7 @@ class TicketPlaces: ViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    func deregisterFromKeyboardNotifications() {
+    func unregisterFromKeyboardNotifications() {
         //Removing notifies on keyboard appearing
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -79,20 +78,29 @@ class TicketPlaces: ViewController {
         }
     }
     
+    func createAlert(titleText: String, messageText: String) {
+        
+        let alert = UIAlertController(title: titleText, message: messageText, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func checkInputPlaces() {
+        
+        let handler: () -> () = {
+            self.createAlert(titleText: "Ошибка", messageText: "Заполните все поля")
+        }
+        originPlaceTextField.checkTextField(completion: handler)
+        destinationPlaceTextField.checkTextField(completion: handler)
+    }
     
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let handler: () -> () = {
-            
-            let alert = UIAlertController(title: "Ошибка", message: "Заполните все поля", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-        
-        originPlaceTextField.checkTextField(completion: handler)
-        destinationPlaceTextField.checkTextField(completion: handler)
+        checkInputPlaces()
         
         if segue.identifier == segueIdentifierTicketDates {
             
