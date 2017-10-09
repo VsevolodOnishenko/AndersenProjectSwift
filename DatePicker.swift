@@ -11,6 +11,7 @@ import UIKit
 final class DatePicker: UIDatePicker {
     
     var dateFormatter: DateFormatter?
+    typealias compareDatePickerСlosure = () -> ()
     
     convenience init() {
         self.init()
@@ -23,29 +24,28 @@ final class DatePicker: UIDatePicker {
     
     //MARK: DatePicker Methods
     
-    func setupDate(minDate: Date, timeInterval: TimeInterval) {
+    func setupDate(minDate: Date = Date(), timeInterval: TimeInterval = (60 * 60 * 24 * 90)) {
         
         self.minimumDate = minDate
         self.maximumDate = minDate.addingTimeInterval(timeInterval)
     }
     
-    func compareDatePickers (departureDate: Date, completion: () -> ()) {
+    func compareInboundDatePicker (departureDate: Date, completion: compareDatePickerСlosure) {
         
         if departureDate > self.date {
             completion()
         }
     }
     
-    func hideInboundDatePicker(ticketRequestModel: TicketRequestModel, label: UILabel) {
+    func hideInboundDatePicker(ticketRequestModel: TicketRequestModel) {
         
         if ticketRequestModel.directType == true {
             self.isHidden = true
-            label.isHidden = true
         }
     }
     
     func convertDateToString(dateFormat: String) -> String {
-        
+                
         self.dateFormatter?.dateFormat = dateFormat
         let stringDate = dateFormatter?.string(from: self.date)
         return stringDate!

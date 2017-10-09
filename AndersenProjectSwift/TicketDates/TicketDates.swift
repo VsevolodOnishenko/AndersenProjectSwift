@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TicketDates: ViewController {
+class TicketDates: BaseViewController {
     
     @IBOutlet private weak var dateDepartureLabel: UILabel!
     @IBOutlet private weak var departureDatePicker: DatePicker!
@@ -19,28 +19,28 @@ class TicketDates: ViewController {
     let ticketRequestModel = TicketRequestModel()
     let segueIdentifier = "toResultList"
     var ticketResultsViewController = TicketSearchResults()
+    typealias compareDatePickerСlosure = () -> ()
     
     let dateFormat = "yyyy-MM-dd"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let minDate = Date()
-        let departureTimeInterval: TimeInterval = (60 * 60 * 24 * 90) //90 days from today
-        let inboundTimeInterval: TimeInterval = (60 * 60 * 24 * 180) //180 days from today
+        departureDatePicker.setupDate() // use default values in parameters
+        inboundDatePicker.setupDate(timeInterval: (60 * 60 * 24 * 180))
+        inboundDatePicker.hideInboundDatePicker(ticketRequestModel: ticketRequestModel)
+        hideLabel(label: dateDepartureLabel)
         
-        //setup datepickers on view
-        departureDatePicker.setupDate(minDate: minDate, timeInterval: departureTimeInterval)
-        inboundDatePicker.setupDate(minDate: minDate, timeInterval: inboundTimeInterval)
-        inboundDatePicker.hideInboundDatePicker(ticketRequestModel: ticketRequestModel, label: dateInboundLabel)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func hideLabel (label: UILabel) {
+        
+        if departureDatePicker.isHidden == true {
+            label.isHidden = true
+        }
     }
     
-    func createAlert(titleText: String, messageText: String) {
+    fileprivate func createAlert(titleText: String, messageText: String) {
         
         let alert = UIAlertController(title: titleText, message: messageText, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
@@ -51,10 +51,10 @@ class TicketDates: ViewController {
     
     func checkDatePicker() {
         
-        let handler: () -> () = {
+        let handler: compareDatePickerСlosure = { [unowned self] in
             self.createAlert(titleText: "Ошибка", messageText: "Дата отправления должна быть не позже даты возвращения")
         }
-        inboundDatePicker.compareDatePickers(departureDate: departureDatePicker.date, completion: handler)
+        inboundDatePicker.compareInboundDatePicker(departureDate: departureDatePicker.date, completion: handler)
     }
     
     // MARK: - Navigation

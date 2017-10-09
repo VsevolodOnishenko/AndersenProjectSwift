@@ -10,13 +10,15 @@ import UIKit
 
 class TextField: UITextField {
     
+    typealias checkTextFieldClosure = () -> ()
+    
     func autocompleteTextField(_ textField: TextField) {
         //add some actions later
     }
     
     // TODO: Fix this with rule in closure
     
-    func checkTextField(completion: () -> ()) {
+    func checkTextField(completion: checkTextFieldClosure) {
         
         if self.text == "" {
             completion()
@@ -37,4 +39,5 @@ extension TicketPlaces: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true
     }
+
 }

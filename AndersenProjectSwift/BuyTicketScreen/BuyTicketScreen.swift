@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BuyTicketScreen: UIViewController {
+class BuyTicketScreen: BaseViewController {
     
     @IBOutlet weak var buyTicketView: UIView!
     @IBOutlet weak var buyTicketMessageLabel: UILabel!
@@ -18,11 +18,6 @@ class BuyTicketScreen: UIViewController {
         
         buyTicketView.layer.cornerRadius = 15.0
         buyTicketView.layer.masksToBounds = true
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func closeButtonPressed(_ sender: Any) {

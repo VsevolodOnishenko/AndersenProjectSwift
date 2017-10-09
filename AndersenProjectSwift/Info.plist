@@ -37,6 +37,10 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>baseUrl</key>
+	<string>http://api.travelpayouts.com/v1/prices/cheap</string>
+	<key>accessToken</key>
+	<string>074a2187e916545621a1b3aaec618272</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

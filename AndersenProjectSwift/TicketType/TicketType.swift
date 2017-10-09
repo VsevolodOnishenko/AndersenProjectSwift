@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TicketType: ViewController {
+class TicketType: BaseViewController {
     
     var ticketPlacesNavCon = UINavigationController()
     var ticketPlacesViewCon = TicketPlaces()
@@ -22,11 +22,6 @@ class TicketType: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: Navigation

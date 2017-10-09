@@ -15,25 +15,16 @@ import ObjectMapper
 
 class TicketResponseModel: Mappable {
     
+    var success: Bool?
+    var data: [String: Any]?
+    
     var id: Int?
-    
     var price: Int?
-    //var currency: String?
-    
-    var originPlace: String?
-    var originPlaceId: Int?
-    var originCarrier: String?
-    var originCarrierId: String?
-    
-    var destinationPlace: String?
-    var destinationPlaceId: Int?
-    var destinationCarrier: String?
-    var destinationCarrierId: Int?
-    
-    var outboundDepartureDate: String?
-    var inboundDepartureDate: String?
-    
-    
+    var airline: String?
+    var flightNumber: Int?
+    var departureAt: String?
+    var returnAt: String?
+    var expiresAt: String? // relevance of information
     
     convenience required init?(map: Map) {
         self.init()
@@ -41,23 +32,9 @@ class TicketResponseModel: Mappable {
     
     func mapping(map: Map) {
         
-        id <- map ["data.destination"] //ask about it
+       data <- map ["data"]
+       success <- map ["success"]
         
-        price <- map ["Quotes.MinPrice"]
-       // currency <- map ["Currencies.Code"]
-        
-        originPlace <- map ["Places.Name"]
-        originPlaceId <- map ["Quotes.OutboundLeg.OriginId"]
-        originCarrier <- map ["Carriers.Name"]
-        originCarrierId <- map ["Quotes.OutboundLeg.CarrierIds"]
-        
-        destinationPlace <- map ["Places.Name"]
-        destinationPlaceId <- map ["Quotes.OutboundLeg.DestinationId"]
-        destinationCarrier <- map ["Carrier.Name"]
-        destinationCarrierId <- map ["Quotes.OutboundLeg.CarrierIds"]
-        
-        outboundDepartureDate <- map ["Quotes.OutboundLeg.DepartureDate"]
-        inboundDepartureDate <- map ["Quotes.InboundLeg.DepartureDate"]
     }
     
     func fetchResponse(ticketRequestModel: URLRequestConvertible) {
@@ -74,7 +51,10 @@ class TicketResponseModel: Mappable {
             }
         }
     }
-    
+    /*
+    func getTickets(HKT: String) -> [TicketType] {
+       return nil
+    }*/
 }
 
 
