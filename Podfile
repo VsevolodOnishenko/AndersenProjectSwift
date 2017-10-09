@@ -11,6 +11,5 @@ pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
 pod 'AlamofireObjectMapper', '~> 4.0'
 pod 'ObjectMapper', '~> 2.2'
 pod 'Alamofire', '~> 4.5'
-pod 'GooglePlaces’
 
 end

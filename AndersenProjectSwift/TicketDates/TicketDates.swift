@@ -20,6 +20,7 @@ class TicketDates: BaseViewController {
     let segueIdentifier = "toResultList"
     var ticketResultsViewController = TicketSearchResults()
     typealias compareDatePickerСlosure = () -> ()
+    let departureMaxTimeInterval: TimeInterval = (60 * 60 * 24 * 180)
     
     let dateFormat = "yyyy-MM-dd"
     
@@ -27,7 +28,7 @@ class TicketDates: BaseViewController {
         super.viewDidLoad()
         
         departureDatePicker.setupDate() // use default values in parameters
-        inboundDatePicker.setupDate(timeInterval: (60 * 60 * 24 * 180))
+        inboundDatePicker.setupDate(timeInterval: departureMaxTimeInterval)
         inboundDatePicker.hideInboundDatePicker(ticketRequestModel: ticketRequestModel)
         hideLabel(label: dateDepartureLabel)
         

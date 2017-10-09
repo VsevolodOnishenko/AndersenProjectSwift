@@ -45,9 +45,9 @@ final class DatePicker: UIDatePicker {
     }
     
     func convertDateToString(dateFormat: String) -> String {
-                
+        
         self.dateFormatter?.dateFormat = dateFormat
         let stringDate = dateFormatter?.string(from: self.date)
-        return stringDate!
+        return stringDate ?? ""
     }
 }

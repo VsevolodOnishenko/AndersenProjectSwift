@@ -56,8 +56,8 @@ class TicketPlaces: BaseViewController {
         let handler: checkTextFieldClosure = { [unowned self] in
             self.createAlert(titleText: "Ошибка", messageText: "Заполните все поля")
         }
-        originPlaceTextField.checkTextField(completion: handler)
-        destinationPlaceTextField.checkTextField(completion: handler)
+        originPlaceTextField.checkTextField(spellRule: "%@",completion: handler)
+        destinationPlaceTextField.checkTextField(spellRule: "%@", completion: handler)
     }
     
     // MARK: - Navigation
@@ -65,6 +65,7 @@ class TicketPlaces: BaseViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         checkInputPlaces()
+        originPlaceTextField.autocompleteTextField()
         
         if segue.identifier == segueIdentifierTicketDates {
             
