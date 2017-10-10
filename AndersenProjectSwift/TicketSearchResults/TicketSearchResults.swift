@@ -10,16 +10,14 @@ import UIKit
 
 class TicketSearchResults: BaseViewController {
     
-    
     @IBOutlet fileprivate weak var ticketResultsTableView: UITableView!
+    var ticketRequestModel = TicketRequestModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //print(ticketRequestModel.toJSON())//check pass data
+        print(ticketRequestModel.toJSON())//check pass data
         
-        
-        // Do any additional setup after loading the view.
     }
 }
 
@@ -41,9 +39,5 @@ extension TicketSearchResults: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-    
-    
-    
-    
 }
 

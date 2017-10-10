@@ -16,10 +16,14 @@ class TicketPlaces: BaseViewController {
     @IBOutlet fileprivate weak var destinationPlaceTextField: TextField!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    let ticketRequestModel = TicketRequestModel()
-    var ticketDatesViewController = TicketDates()
+    fileprivate var responseData:NSMutableData?
+    fileprivate var dataTask:URLSessionDataTask?
+    
+    var ticketRequestModel = TicketRequestModel()
+    var ticketDatesViewController: TicketDates!
     
     let segueIdentifierTicketDates = "toTicketDates"
+    
     typealias checkTextFieldClosure = () -> ()
     
     override func viewDidLoad() {
@@ -28,6 +32,10 @@ class TicketPlaces: BaseViewController {
         originPlaceTextField.delegate = self
         destinationPlaceTextField.delegate = self
         
+        //for autocompelete
+        originPlaceTextField.configureTextField()
+        destinationPlaceTextField.configureTextField()
+    
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -38,10 +46,6 @@ class TicketPlaces: BaseViewController {
         registerForKeyboardNotifications()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     fileprivate func createAlert(titleText: String, messageText: String) {
         
         let alert = UIAlertController(title: titleText, message: messageText, preferredStyle: UIAlertControllerStyle.alert)
@@ -50,30 +54,25 @@ class TicketPlaces: BaseViewController {
         }))
         self.present(alert, animated: true, completion: nil)
     }
-    
+   
     func checkInputPlaces() {
         
         let handler: checkTextFieldClosure = { [unowned self] in
             self.createAlert(titleText: "Ошибка", messageText: "Заполните все поля")
         }
-        originPlaceTextField.checkTextField(spellRule: "%@",completion: handler)
-        destinationPlaceTextField.checkTextField(spellRule: "%@", completion: handler)
     }
     
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        checkInputPlaces()
-        originPlaceTextField.autocompleteTextField()
-        
         if segue.identifier == segueIdentifierTicketDates {
             
-            //pass data to next controller
-            ticketDatesViewController = segue.destination as! TicketDates
-            ticketDatesViewController.ticketRequestModel.directType = ticketRequestModel.directType
-            ticketDatesViewController.ticketRequestModel.originPlace = originPlaceTextField.text
-            ticketDatesViewController.ticketRequestModel.destinationPlace = destinationPlaceTextField.text
+            ticketRequestModel.originPlace = originPlaceTextField.text
+            ticketRequestModel.destinationPlace = destinationPlaceTextField.text
+            ticketDatesViewController = segue.destination as? TicketDates
+            ticketDatesViewController.ticketRequestModel = ticketRequestModel
+            
         }
     }
 }

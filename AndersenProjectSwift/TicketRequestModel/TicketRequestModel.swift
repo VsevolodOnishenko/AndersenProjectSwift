@@ -33,8 +33,8 @@ class TicketRequestModel: Mappable {
         currency <- map ["currency"]
         originPlace <- map ["origin"]
         destinationPlace <- map ["destination"]
-        departDate <- map ["outboundDate"]
-        returnDate <- map ["inboundDate"]
+        departDate <- map ["depart_date"]
+        returnDate <- map ["return_date"]
         
     }
 }

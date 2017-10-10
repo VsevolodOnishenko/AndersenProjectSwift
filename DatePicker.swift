@@ -10,12 +10,10 @@ import UIKit
 
 final class DatePicker: UIDatePicker {
     
-    var dateFormatter: DateFormatter?
     typealias compareDatePickerСlosure = () -> ()
     
     convenience init() {
         self.init()
-        self.dateFormatter = DateFormatter()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,8 +44,9 @@ final class DatePicker: UIDatePicker {
     
     func convertDateToString(dateFormat: String) -> String {
         
-        self.dateFormatter?.dateFormat = dateFormat
-        let stringDate = dateFormatter?.string(from: self.date)
-        return stringDate ?? ""
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormat
+        let stringDate = dateFormatter.string(from: self.date)
+        return stringDate 
     }
 }

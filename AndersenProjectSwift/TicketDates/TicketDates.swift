@@ -16,18 +16,18 @@ class TicketDates: BaseViewController {
     @IBOutlet private weak var inboundDatePicker: DatePicker!
     @IBOutlet private weak var searchButton: UIButton!
     
-    let ticketRequestModel = TicketRequestModel()
+    var ticketRequestModel = TicketRequestModel()
     let segueIdentifier = "toResultList"
-    var ticketResultsViewController = TicketSearchResults()
+    var ticketResultsViewController: TicketSearchResults!
     typealias compareDatePickerСlosure = () -> ()
     let departureMaxTimeInterval: TimeInterval = (60 * 60 * 24 * 180)
     
-    let dateFormat = "yyyy-MM-dd"
+    let dateFormat = "yyyy-MM"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        departureDatePicker.setupDate() // use default values in parameters
+        departureDatePicker.setupDate() //use default values in parameters
         inboundDatePicker.setupDate(timeInterval: departureMaxTimeInterval)
         inboundDatePicker.hideInboundDatePicker(ticketRequestModel: ticketRequestModel)
         hideLabel(label: dateDepartureLabel)
@@ -66,18 +66,11 @@ class TicketDates: BaseViewController {
         
         if (segue.identifier == segueIdentifier) {
             
-            /*
-             ticketResultsViewController = segue.destination as! TicketSearchResults
-             ticketResultsViewController.ticketRequestModel.directType = ticketRequestModel.directType
-             ticketResultsViewController.ticketRequestModel.originPlace = ticketRequestModel.originPlace
-             ticketResultsViewController.ticketRequestModel.destinationPlace = ticketRequestModel.destinationPlace
-             ticketResultsViewController.ticketRequestModel.outboundPartialDate = dateFormatter.string(from: departureDatePicker.date)
-             ticketResultsViewController.ticketRequestModel.inboundPartialDate = dateFormatter.string(from: inboundDatePicker.date)
-             */
-            
-        }
+            ticketResultsViewController = segue.destination as? TicketSearchResults
+            ticketRequestModel.departDate = departureDatePicker.convertDateToString(dateFormat: dateFormat)
+            ticketRequestModel.returnDate = inboundDatePicker.convertDateToString(dateFormat: dateFormat)
+            ticketResultsViewController.ticketRequestModel = ticketRequestModel
         
+        }
     }
-    
-    
 }
