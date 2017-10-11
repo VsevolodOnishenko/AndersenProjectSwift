@@ -26,8 +26,8 @@
 		FA92D7671F83751700CCA6CB /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92D7661F83751700CCA6CB /* TextField.swift */; };
 		FAA24D581F77E48D006DD8ED /* TicketRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA24D571F77E48D006DD8ED /* TicketRequestModel.swift */; };
 		FAA24D5A1F77E4B5006DD8ED /* TicketResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA24D591F77E4B5006DD8ED /* TicketResponseModel.swift */; };
-		FABA6A731F8CBAC50094E218 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA6A721F8CBAC50094E218 /* AutoCompleteTextField.swift */; };
 		FABA6A751F8CFC960094E218 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA6A741F8CFC960094E218 /* Location.swift */; };
+		FABA6A7B1F8E36660094E218 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA6A7A1F8E36660094E218 /* AutoCompleteTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,8 +54,8 @@
 		FA92D7661F83751700CCA6CB /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = CustomElements/TextField.swift; sourceTree = "<group>"; };
 		FAA24D571F77E48D006DD8ED /* TicketRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketRequestModel.swift; path = AndersenProjectSwift/TicketRequestModel/TicketRequestModel.swift; sourceTree = "<group>"; };
 		FAA24D591F77E4B5006DD8ED /* TicketResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketResponseModel.swift; path = AndersenProjectSwift/TicketResponseModel/TicketResponseModel.swift; sourceTree = "<group>"; };
-		FABA6A721F8CBAC50094E218 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoCompleteTextField.swift; path = CustomElements/AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		FABA6A741F8CFC960094E218 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		FABA6A7A1F8E36660094E218 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoCompleteTextField.swift; path = CustomElements/AutoCompleteTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +148,7 @@
 		FA63BB231F8B5651000616EB /* CustomElements */ = {
 			isa = PBXGroup;
 			children = (
-				FABA6A721F8CBAC50094E218 /* AutoCompleteTextField.swift */,
+				FABA6A7A1F8E36660094E218 /* AutoCompleteTextField.swift */,
 				FA63BB241F8B56A6000616EB /* BaseViewController.swift */,
 				FA92D7661F83751700CCA6CB /* TextField.swift */,
 				FA3396841F812FAB00033CA5 /* DatePicker.swift */,
@@ -307,7 +307,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA3396851F812FAB00033CA5 /* DatePicker.swift in Sources */,
-				FABA6A731F8CBAC50094E218 /* AutoCompleteTextField.swift in Sources */,
 				FA3396831F812D5600033CA5 /* BuyTicketScreen.swift in Sources */,
 				FA3396801F7E83EB00033CA5 /* TicketResultCell.swift in Sources */,
 				FA92D7671F83751700CCA6CB /* TextField.swift in Sources */,
@@ -315,6 +314,7 @@
 				FA1B51551F77D7FC00BD5B99 /* ViewController.swift in Sources */,
 				FA63BB251F8B56A6000616EB /* BaseViewController.swift in Sources */,
 				FA20C7B91F7A5824003F3409 /* TicketPlaces.swift in Sources */,
+				FABA6A7B1F8E36660094E218 /* AutoCompleteTextField.swift in Sources */,
 				FA20C7BD1F7A6B15003F3409 /* TicketSearchResults.swift in Sources */,
 				FAA24D5A1F77E4B5006DD8ED /* TicketResponseModel.swift in Sources */,
 				FAA24D581F77E48D006DD8ED /* TicketRequestModel.swift in Sources */,

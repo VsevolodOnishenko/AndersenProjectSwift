@@ -11,13 +11,15 @@ import Alamofire
 
 class TextField:  AutoCompleteTextField {
     
-    fileprivate var responseData:NSMutableData?
-    fileprivate var dataTask:URLSessionDataTask?
+    private var responseData:NSMutableData?
+    private var dataTask:URLSessionDataTask?
     
-    fileprivate let url = "https://api.sanvarx.amadeus.com/v1.2/airports/autocomplete"
-    fileprivate let apiKey = "Y7AFRIgeJIAc6ccGtLkHQJ7reXqlLuYh"
+    private let url = "https://api.sandbox.amadeus.com/v1.2/airports/autocomplete"
+    private let apiKey = "Y7AFRIgeJIAc6ccGtLkHQJ7reXqlLuYh"
     
     typealias checkTextFieldClosure = () -> ()
+    
+    //MARK: - Check Validation 
     
     func checkTextField(spellRule: (String) -> (Bool), completion: checkTextFieldClosure) {
         
@@ -26,33 +28,22 @@ class TextField:  AutoCompleteTextField {
         }
     }
     
-    //Rules
+    //MARK: - Rules
     
     func isEmptyRule(textField: String) -> Bool {
         return textField.isEmpty
     }
     
-    func isValidTextField(textField: String) -> Bool {
+    func isValidRule(textField: String) -> Bool {
         
-        var returnValue = true
-        let onlyCharRegEx = "^([^0-9]*)$"
+        let validSet = NSCharacterSet.decimalDigits.inverted
+        let range = textField.rangeOfCharacter(from: validSet)
         
-        do {
-            let regex = try NSRegularExpression(pattern: onlyCharRegEx)
-            let nsString = textField as NSString
-            let results = regex.matches(in: textField, range: NSRange(location: 0, length: nsString.length))
-            
-            if results.count == 0
-            {
-                returnValue = false
-            }
-            
-        } catch let error as NSError {
-            print("invalid regex: \(error.localizedDescription)")
-            returnValue = false
+        if range != nil {
+            return false
+        } else {
+            return true
         }
-        
-        return returnValue
     }
     
     // MARK: - Autocomplete Methods
@@ -89,7 +80,6 @@ class TextField:  AutoCompleteTextField {
          }
          */
     }
-    
     
     fileprivate func fetchAutocompletePlaces(_ keyword:String) {
         

@@ -17,12 +17,11 @@ class TicketDates: BaseViewController {
     @IBOutlet private weak var searchButton: UIButton!
     
     var ticketRequestModel = TicketRequestModel()
-    let segueIdentifier = "toResultList"
-    var ticketResultsViewController: TicketSearchResults!
-    typealias compareDatePickerСlosure = () -> ()
-    let departureMaxTimeInterval: TimeInterval = (60 * 60 * 24 * 180)
+    private let segueIdentifier = "toResultList"
     
-    let dateFormat = "yyyy-MM"
+    typealias compareDatePickerСlosure = () -> ()
+    fileprivate let departureMaxTimeInterval: TimeInterval = (60 * 60 * 24 * 180)
+    private let dateFormat = "yyyy-MM"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,23 +33,14 @@ class TicketDates: BaseViewController {
         
     }
     
-    func hideLabel (label: UILabel) {
+    private func hideLabel (label: UILabel) {
         
         if departureDatePicker.isHidden == true {
             label.isHidden = true
         }
     }
     
-    fileprivate func createAlert(titleText: String, messageText: String) {
-        
-        let alert = UIAlertController(title: titleText, message: messageText, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func checkDatePicker() {
+    private func checkDatePicker() {
         
         let handler: compareDatePickerСlosure = { [unowned self] in
             self.createAlert(titleText: "Ошибка", messageText: "Дата отправления должна быть не позже даты возвращения")
@@ -62,15 +52,16 @@ class TicketDates: BaseViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        checkDatePicker()
-        
         if (segue.identifier == segueIdentifier) {
             
-            ticketResultsViewController = segue.destination as? TicketSearchResults
             ticketRequestModel.departDate = departureDatePicker.convertDateToString(dateFormat: dateFormat)
             ticketRequestModel.returnDate = inboundDatePicker.convertDateToString(dateFormat: dateFormat)
+            
+            guard let ticketResultsViewController = segue.destination as? TicketSearchResults else {
+                print("Error")
+                return
+            }
             ticketResultsViewController.ticketRequestModel = ticketRequestModel
-        
         }
     }
 }

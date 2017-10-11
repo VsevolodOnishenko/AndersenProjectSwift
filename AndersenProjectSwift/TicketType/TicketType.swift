@@ -10,12 +10,8 @@ import UIKit
 
 class TicketType: BaseViewController {
     
-    var ticketPlacesNavCon: UINavigationController!
-    var ticketPlacesViewCon: TicketPlaces!
-    
-    
-    let segueDirectType = "directType"
-    let segueRoundType = "roundType"
+    fileprivate let segueDirectType = "directType"
+    fileprivate let segueRoundType = "roundType"
     
     @IBOutlet private weak var selectLabel: UILabel!
     @IBOutlet private weak var directButton: UIButton!
@@ -23,24 +19,33 @@ class TicketType: BaseViewController {
     
     var ticketRequestModel = TicketRequestModel()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
     // MARK: Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        ticketPlacesNavCon = segue.destination as? UINavigationController
-        ticketPlacesViewCon = ticketPlacesNavCon.viewControllers.first as? TicketPlaces
+        guard let ticketPlacesNavigationController = segue.destination as? UINavigationController
+            else {
+                print("Error")
+                return
+        }
         
-        if (segue.identifier == segueDirectType) {
-            ticketRequestModel.directType = true
+        guard let ticketPlacesViewController = ticketPlacesNavigationController.topViewController as? TicketPlaces else {
+            print("Error")
+            return
         }
-        else if (segue.identifier == segueRoundType) {
-            ticketRequestModel.directType = false
+        
+        if let segueIdentifier = segue.identifier {
+            
+            switch segueIdentifier {
+            case segueDirectType:
+                ticketRequestModel.directType = true
+            case segueRoundType:
+                ticketRequestModel.directType = false
+            default:
+                break
+            }
+            
         }
-        ticketPlacesViewCon.ticketRequestModel = ticketRequestModel
+        ticketPlacesViewController.ticketRequestModel = ticketRequestModel
     }
 }
