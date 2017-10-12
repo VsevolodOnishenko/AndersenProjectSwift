@@ -28,11 +28,15 @@ final class DatePicker: UIDatePicker {
         self.maximumDate = minDate.addingTimeInterval(timeInterval)
     }
     
-    func compareInboundDatePicker (departureDate: Date, completion: compareDatePickerСlosure) {
+    func compareInboundDatePicker (departureDate: Date, completion: compareDatePickerСlosure) -> Bool {
         
         if departureDate > self.date {
             completion()
+            return false
+
         }
+        return true
+        
     }
     
     func hideInboundDatePicker(ticketRequestModel: TicketRequestModel) {

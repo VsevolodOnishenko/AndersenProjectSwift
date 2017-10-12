@@ -26,7 +26,6 @@
 		FA92D7671F83751700CCA6CB /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92D7661F83751700CCA6CB /* TextField.swift */; };
 		FAA24D581F77E48D006DD8ED /* TicketRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA24D571F77E48D006DD8ED /* TicketRequestModel.swift */; };
 		FAA24D5A1F77E4B5006DD8ED /* TicketResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA24D591F77E4B5006DD8ED /* TicketResponseModel.swift */; };
-		FABA6A751F8CFC960094E218 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA6A741F8CFC960094E218 /* Location.swift */; };
 		FABA6A7B1F8E36660094E218 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA6A7A1F8E36660094E218 /* AutoCompleteTextField.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +53,6 @@
 		FA92D7661F83751700CCA6CB /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = CustomElements/TextField.swift; sourceTree = "<group>"; };
 		FAA24D571F77E48D006DD8ED /* TicketRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketRequestModel.swift; path = AndersenProjectSwift/TicketRequestModel/TicketRequestModel.swift; sourceTree = "<group>"; };
 		FAA24D591F77E4B5006DD8ED /* TicketResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketResponseModel.swift; path = AndersenProjectSwift/TicketResponseModel/TicketResponseModel.swift; sourceTree = "<group>"; };
-		FABA6A741F8CFC960094E218 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FABA6A7A1F8E36660094E218 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoCompleteTextField.swift; path = CustomElements/AutoCompleteTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,7 +88,6 @@
 		FA1B51461F77D7FC00BD5B99 = {
 			isa = PBXGroup;
 			children = (
-				FABA6A741F8CFC960094E218 /* Location.swift */,
 				FA1B51511F77D7FC00BD5B99 /* AndersenProjectSwift */,
 				FA1B51501F77D7FC00BD5B99 /* Products */,
 				80E21284BD68267E4BC9756D /* Pods */,
@@ -310,7 +307,6 @@
 				FA3396831F812D5600033CA5 /* BuyTicketScreen.swift in Sources */,
 				FA3396801F7E83EB00033CA5 /* TicketResultCell.swift in Sources */,
 				FA92D7671F83751700CCA6CB /* TextField.swift in Sources */,
-				FABA6A751F8CFC960094E218 /* Location.swift in Sources */,
 				FA1B51551F77D7FC00BD5B99 /* ViewController.swift in Sources */,
 				FA63BB251F8B56A6000616EB /* BaseViewController.swift in Sources */,
 				FA20C7B91F7A5824003F3409 /* TicketPlaces.swift in Sources */,

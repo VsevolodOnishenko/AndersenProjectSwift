@@ -35,10 +35,6 @@ class TicketPlaces: BaseViewController {
         originPlaceTextField.configureTextField()
         destinationPlaceTextField.configureTextField()
         
-        let handler: checkTextFieldClosure = { [unowned self] in
-            self.createAlert(titleText: "Ошибка", messageText: "Заполните все поля")
-        }
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -51,7 +47,32 @@ class TicketPlaces: BaseViewController {
         registerForKeyboardNotifications()
     }
     
+    func validationTextField(s: TextField) -> Bool {
+        
+        let handler: checkTextFieldClosure = { [unowned self] in
+            self.createAlert(titleText: "Ошибка", messageText: "Заполните поля правильно")
+        }
+        
+        guard s.text != nil else {
+            return false
+        }
+        
+        if (s.checkTextField(spellRule: s.isValidRule(), completion: handler)) {
+            return true
+        }
+        return false
+    }
+    
     // MARK: - Navigation
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        if (validationTextField(s: destinationPlaceTextField) &&
+            validationTextField(s: originPlaceTextField)) {
+            return true
+        }
+        return false
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

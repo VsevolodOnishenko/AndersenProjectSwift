@@ -10,14 +10,16 @@ import UIKit
 
 class TicketType: BaseViewController {
     
-    fileprivate let segueDirectType = "directType"
-    fileprivate let segueRoundType = "roundType"
-    
     @IBOutlet private weak var selectLabel: UILabel!
     @IBOutlet private weak var directButton: UIButton!
     @IBOutlet private weak var roundButton: UIButton!
     
     var ticketRequestModel = TicketRequestModel()
+    
+    private enum SegueType: String {
+        case segueDirectType = "directType"
+        case segueRoundType = "roundType"
+    }
     
     // MARK: Navigation
     
@@ -37,9 +39,9 @@ class TicketType: BaseViewController {
         if let segueIdentifier = segue.identifier {
             
             switch segueIdentifier {
-            case segueDirectType:
+            case SegueType.segueDirectType.rawValue:
                 ticketRequestModel.directType = true
-            case segueRoundType:
+            case SegueType.segueRoundType.rawValue:
                 ticketRequestModel.directType = false
             default:
                 break

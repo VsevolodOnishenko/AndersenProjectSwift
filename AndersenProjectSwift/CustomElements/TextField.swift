@@ -14,34 +14,55 @@ class TextField:  AutoCompleteTextField {
     private var responseData:NSMutableData?
     private var dataTask:URLSessionDataTask?
     
+    
     private let url = "https://api.sandbox.amadeus.com/v1.2/airports/autocomplete"
     private let apiKey = "Y7AFRIgeJIAc6ccGtLkHQJ7reXqlLuYh"
     
     typealias checkTextFieldClosure = () -> ()
     
-    //MARK: - Check Validation 
+    //MARK: - Check Validation
     
-    func checkTextField(spellRule: (String) -> (Bool), completion: checkTextFieldClosure) {
+    func checkTextField(spellRule: Bool, completion: checkTextFieldClosure) -> Bool {
         
-        if spellRule(self.text!) {
-            completion()
+        if spellRule {       //если сюда приходит тру, тогда вызываем комплижн
+            completion()     //пример: isEmpty = true, тогда spellRule = true, тогда комплижн
+            return false
         }
+        return true
     }
     
     //MARK: - Rules
     
-    func isEmptyRule(textField: String) -> Bool {
-        return textField.isEmpty
+    func isEmptyRule() -> Bool {
+        
+        guard let text = self.text else {
+            return true
+        }
+        print(text.isEmpty)
+        return text.isEmpty
     }
     
-    func isValidRule(textField: String) -> Bool {
+    func isValidRule() -> Bool {
         
-        let validSet = NSCharacterSet.decimalDigits.inverted
-        let range = textField.rangeOfCharacter(from: validSet)
+        guard let text = self.text else {
+            return true
+        }
         
-        if range != nil {
+        let invertedNumbersValidSet = NSCharacterSet.decimalDigits.inverted
+        
+        let trimNumbers = text.trimmingCharacters(in: invertedNumbersValidSet)
+        let trimWhiteSpaces = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        print("\n ", trimNumbers, "\n", trimWhiteSpaces.characters)
+        
+        if trimNumbers.characters.count == 0
+            && trimWhiteSpaces.characters.count > 0 {
+            
+            print("False")
             return false
+            
         } else {
+            print("true")
             return true
         }
     }

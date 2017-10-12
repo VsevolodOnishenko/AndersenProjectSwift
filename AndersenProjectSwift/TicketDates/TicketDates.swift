@@ -20,7 +20,7 @@ class TicketDates: BaseViewController {
     private let segueIdentifier = "toResultList"
     
     typealias compareDatePickerСlosure = () -> ()
-    fileprivate let departureMaxTimeInterval: TimeInterval = (60 * 60 * 24 * 180)
+    private let departureMaxTimeInterval: TimeInterval = (60 * 60 * 24 * 180)
     private let dateFormat = "yyyy-MM"
     
     override func viewDidLoad() {
@@ -29,26 +29,39 @@ class TicketDates: BaseViewController {
         departureDatePicker.setupDate() //use default values in parameters
         inboundDatePicker.setupDate(timeInterval: departureMaxTimeInterval)
         inboundDatePicker.hideInboundDatePicker(ticketRequestModel: ticketRequestModel)
-        hideLabel(label: dateDepartureLabel)
+        hideLabel(label: dateInboundLabel)
         
     }
     
-    private func hideLabel (label: UILabel) {
+    fileprivate func hideLabel (label: UILabel) {
         
-        if departureDatePicker.isHidden == true {
+        if inboundDatePicker.isHidden == true {
             label.isHidden = true
+            
         }
     }
     
-    private func checkDatePicker() {
+    fileprivate func checkDatePicker(d: DatePicker) -> Bool {
         
         let handler: compareDatePickerСlosure = { [unowned self] in
             self.createAlert(titleText: "Ошибка", messageText: "Дата отправления должна быть не позже даты возвращения")
         }
-        inboundDatePicker.compareInboundDatePicker(departureDate: departureDatePicker.date, completion: handler)
+        
+        if d.compareInboundDatePicker(departureDate: departureDatePicker.date, completion: handler) {
+            return true
+        }
+        return false
     }
     
     // MARK: - Navigation
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        if checkDatePicker(d: inboundDatePicker) {
+            return true
+        }
+        return false
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
