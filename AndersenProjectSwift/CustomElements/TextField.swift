@@ -8,15 +8,45 @@
 
 import UIKit
 import Alamofire
+import AlamofireNetworkActivityIndicator
 
 class TextField:  AutoCompleteTextField {
     
-    private var responseData:NSMutableData?
-    private var dataTask:URLSessionDataTask?
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+    }
     
-    
-    private let url = "https://api.sandbox.amadeus.com/v1.2/airports/autocomplete"
-    private let apiKey = "Y7AFRIgeJIAc6ccGtLkHQJ7reXqlLuYh"
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        self.onTextChange = { [weak self] string in
+            self?.autoCompleteStrings = ["String","2","Los Angeles"]
+            
+            /*
+            let autocompletePlaceModelRequest = AutocompletePlaceRequestModel(str: string)
+            Alamofire.request(autocompletePlaceModelRequest).validate().responseObject { (response: DataResponse<AutocompletePlaceModel>) in
+                
+                switch response.result {
+                case.success:
+                    
+                    let autocompletePlaceModel = response.result
+                    print("Some Info")
+                    print(autocompletePlaceModel)
+                    self?.autoCompleteStrings = ["1","2","3"]
+                case.failure:
+                    print("Error" + (response.debugDescription))
+                }
+            }
+            */
+            
+        }
+        /*
+         self.onSelect = {
+         
+         }*/
+
+    }
     
     typealias checkTextFieldClosure = () -> ()
     
@@ -84,67 +114,25 @@ class TextField:  AutoCompleteTextField {
         self.autoCompleteAttributes = attributes
     }
     
-    func handleTextFieldInterfaces() {
+    
+    func fetchAutocompletePlaces(autocompletePlaceModelRequest: URLRequestConvertible) {
         
-        self.onTextChange = {/*[weak self]*/ text in
-            if !(self.text?.isEmpty)! {
-                if let dataTask = self.dataTask {
-                    dataTask.cancel()
-                }
-                self.fetchAutocompletePlaces(text)
+        Alamofire.request(autocompletePlaceModelRequest).validate().responseObject { (response: DataResponse<AutocompletePlaceModel>) in
+            
+            NetworkActivityIndicatorManager.shared.isEnabled = true
+            NetworkActivityIndicatorManager.shared.startDelay = 2.0
+            
+            switch response.result {
+            case.success:
+                let autocomplete = response.result.value
+                print("Some Info")
+                print(autocomplete!)
+            case.failure:
+                print("Error" + (response.debugDescription))
             }
         }
-        
-        /*
-         self.onSelect = {[weak self] text, indexpath in
-         
-         }
-         */
     }
     
-    fileprivate func fetchAutocompletePlaces(_ keyword:String) {
-        
-        let urlString = "\(url)?apikey=\(apiKey)&term=\(keyword)"
-        let s = (CharacterSet.urlQueryAllowed as NSCharacterSet).mutableCopy() as! NSMutableCharacterSet
-        s.addCharacters(in: "+&")
-        if let encodedString = urlString.addingPercentEncoding(withAllowedCharacters: s as CharacterSet) {
-            if let url = URL(string: encodedString) {
-                let request = URLRequest(url: url)
-                dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
-                    if let data = data {
-                        
-                        do {
-                            let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:AnyObject]
-                            
-                            print(result)
-                            
-                            if let status = result["status"] as? String{
-                                if status == "success"{
-                                    if let predictions = result["predictions"] as? NSArray{
-                                        var locations = [String]()
-                                        for dict in predictions as! [NSDictionary]{
-                                            locations.append(dict["description"] as! String)
-                                        }
-                                        DispatchQueue.main.async(execute: { () -> Void in
-                                            self.autoCompleteStrings = locations
-                                        })
-                                        return
-                                    }
-                                }
-                            }
-                            DispatchQueue.main.async(execute: { () -> Void in
-                                self.autoCompleteStrings = nil
-                            })
-                        }
-                        catch let error as NSError{
-                            print("Error: \(error.localizedDescription)")
-                        }
-                    }
-                })
-                dataTask?.resume()
-            }
-        }
-    }
 }
 
 // MARK: - TextFieldDelegate
@@ -159,5 +147,4 @@ extension TicketPlaces: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true
     }
-    
 }

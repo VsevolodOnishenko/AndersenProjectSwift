@@ -12,11 +12,8 @@ import Alamofire
 
 class TicketRequestModel: Mappable {
     
-    var baseUrl: String = "http://api.travelpayouts.com/v1/prices/cheap" //never mind
-    var accessToken: String?
-    var resourceFileDictionary: NSDictionary?
-    
     var directType: Bool?
+    var accessToken: String?
     
     var originPlace: String?
     var destinationPlace: String?
@@ -24,8 +21,17 @@ class TicketRequestModel: Mappable {
     var returnDate: String?
     var currency: String?
     
+    enum TicketRequestModelError: Error {
+        
+        case invalid
+        case nothingInPlist
+        
+    }
+    
     convenience required init?(map: Map) {
         self.init()
+    
+        
     }
     
     func mapping(map: Map) {
@@ -41,22 +47,32 @@ class TicketRequestModel: Mappable {
 
 extension TicketRequestModel: URLRequestConvertible {
     
-    func asURLRequest() -> URLRequest {
+    func asURLRequest() throws -> URLRequest {
         
+        var dictRoot: NSDictionary?
         if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
-            resourceFileDictionary = NSDictionary(contentsOfFile: path)
+            dictRoot = NSDictionary(contentsOfFile: path)
         }
         
-        if let resourceFileDictionaryContent = resourceFileDictionary {
-            
-            resourceFileDictionaryContent.object(forKey: "baseUrl")
+        guard let dict = dictRoot else {
+            throw TicketRequestModelError.nothingInPlist
         }
         
-        let tempUrl = try! baseUrl.asURL()
-        let urlRequest = URLRequest(url: (tempUrl))
-        let params: Parameters =  self.toJSON()
+        guard let baseUrl = (dict["baseUrl"] as? String),
+            let accessToken = (dict["accessToken"] as? String) else {
+                throw TicketRequestModelError.nothingInPlist
+        }
         
-        return try! URLEncoding.default.encode(urlRequest, with: params)
+        print("baseUrl \(baseUrl)")
+        print("accessToken \(accessToken)")
+        
+        let url = try baseUrl.asURL()
+        let urlRequest = URLRequest(url: url)
+        var params: Parameters =  self.toJSON()
+        params["accessToken"] = accessToken
+        
+        print("\n", params)
+        return try URLEncoding.default.encode(urlRequest, with: params)
         
     }
 }

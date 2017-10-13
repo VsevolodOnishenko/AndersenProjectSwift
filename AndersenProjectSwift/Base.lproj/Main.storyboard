@@ -596,7 +596,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="background" width="864" height="1080"/>
+        <image name="background" width="1080" height="1350"/>
         <image name="imageView:N2l-lx-HkJ:image" width="24" height="24">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU

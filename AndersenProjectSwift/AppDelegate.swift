@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import AlamofireNetworkActivityIndicator
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,14 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
         let object: [String: Any] = [:]
-        let response = TicketResponseModel(JSON: object)
-        let request = TicketRequestModel(JSON: object)
-        response?.fetchResponse(ticketRequestModel: (request?.asURLRequest())!)
+        guard let request = TicketRequestModel(JSON: object) else {
+            print("not request model")
+            return false
+        }
+        guard let response = TicketResponseModel(JSON: object) else {
+            print("not response model")
+            return false
+        }
         
-        NetworkActivityIndicatorManager.shared.isEnabled = true
-        NetworkActivityIndicatorManager.shared.startDelay = 2.0
-        
+        response.fetchResponse(ticketRequestModel: request)
         return true
     }
 

@@ -47,6 +47,8 @@ class TicketPlaces: BaseViewController {
         registerForKeyboardNotifications()
     }
     
+    //MARK: - Validation
+    
     func validationTextField(s: TextField) -> Bool {
         
         let handler: checkTextFieldClosure = { [unowned self] in

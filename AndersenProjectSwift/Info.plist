@@ -39,8 +39,12 @@
 	</array>
 	<key>baseUrl</key>
 	<string>http://api.travelpayouts.com/v1/prices/cheap</string>
+	<key>autocompleteBaseUrl</key>
+	<string>https://api.sandbox.amadeus.com/v1.2/airports/autocomplete</string>
 	<key>accessToken</key>
 	<string>074a2187e916545621a1b3aaec618272</string>
+	<key>autocompleteApiKey</key>
+	<string>Y7AFRIgeJIAc6ccGtLkHQJ7reXqlLuYh</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

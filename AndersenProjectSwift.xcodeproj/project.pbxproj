@@ -27,6 +27,8 @@
 		FAA24D581F77E48D006DD8ED /* TicketRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA24D571F77E48D006DD8ED /* TicketRequestModel.swift */; };
 		FAA24D5A1F77E4B5006DD8ED /* TicketResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA24D591F77E4B5006DD8ED /* TicketResponseModel.swift */; };
 		FABA6A7B1F8E36660094E218 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA6A7A1F8E36660094E218 /* AutoCompleteTextField.swift */; };
+		FABA6A7D1F8F8A100094E218 /* AutocompletePlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA6A7C1F8F8A100094E218 /* AutocompletePlaceModel.swift */; };
+		FABA6A7F1F90BF030094E218 /* AutocompletePlaceRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA6A7E1F90BF030094E218 /* AutocompletePlaceRequestModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		FAA24D571F77E48D006DD8ED /* TicketRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketRequestModel.swift; path = AndersenProjectSwift/TicketRequestModel/TicketRequestModel.swift; sourceTree = "<group>"; };
 		FAA24D591F77E4B5006DD8ED /* TicketResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketResponseModel.swift; path = AndersenProjectSwift/TicketResponseModel/TicketResponseModel.swift; sourceTree = "<group>"; };
 		FABA6A7A1F8E36660094E218 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoCompleteTextField.swift; path = CustomElements/AutoCompleteTextField.swift; sourceTree = "<group>"; };
+		FABA6A7C1F8F8A100094E218 /* AutocompletePlaceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutocompletePlaceModel.swift; path = AndersenProjectSwift/AutocompletePlaceModel/AutocompletePlaceModel.swift; sourceTree = "<group>"; };
+		FABA6A7E1F90BF030094E218 /* AutocompletePlaceRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutocompletePlaceRequestModel.swift; path = AndersenProjectSwift/AutocompletePlaceRequestModel/AutocompletePlaceRequestModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +160,8 @@
 		FAA24D5B1F77E4C6006DD8ED /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FABA6A7E1F90BF030094E218 /* AutocompletePlaceRequestModel.swift */,
+				FABA6A7C1F8F8A100094E218 /* AutocompletePlaceModel.swift */,
 				FAA24D571F77E48D006DD8ED /* TicketRequestModel.swift */,
 				FAA24D591F77E4B5006DD8ED /* TicketResponseModel.swift */,
 				FA08C5A71F7916F800451364 /* TicketUIModel.swift */,
@@ -308,6 +314,7 @@
 				FA3396801F7E83EB00033CA5 /* TicketResultCell.swift in Sources */,
 				FA92D7671F83751700CCA6CB /* TextField.swift in Sources */,
 				FA1B51551F77D7FC00BD5B99 /* ViewController.swift in Sources */,
+				FABA6A7F1F90BF030094E218 /* AutocompletePlaceRequestModel.swift in Sources */,
 				FA63BB251F8B56A6000616EB /* BaseViewController.swift in Sources */,
 				FA20C7B91F7A5824003F3409 /* TicketPlaces.swift in Sources */,
 				FABA6A7B1F8E36660094E218 /* AutoCompleteTextField.swift in Sources */,
@@ -315,6 +322,7 @@
 				FAA24D5A1F77E4B5006DD8ED /* TicketResponseModel.swift in Sources */,
 				FAA24D581F77E48D006DD8ED /* TicketRequestModel.swift in Sources */,
 				FA08C5A81F7916F800451364 /* TicketUIModel.swift in Sources */,
+				FABA6A7D1F8F8A100094E218 /* AutocompletePlaceModel.swift in Sources */,
 				FA1B515B1F77D7FD00BD5B99 /* AndersenProjectSwift.xcdatamodeld in Sources */,
 				FA20C7B61F7A57DE003F3409 /* TicketType.swift in Sources */,
 				FA1B51531F77D7FC00BD5B99 /* AppDelegate.swift in Sources */,
