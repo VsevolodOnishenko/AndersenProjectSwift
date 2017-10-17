@@ -29,16 +29,8 @@ class TicketDates: BaseViewController {
         departureDatePicker.setupDate() //use default values in parameters
         inboundDatePicker.setupDate(timeInterval: departureMaxTimeInterval)
         inboundDatePicker.hideInboundDatePicker(ticketRequestModel: ticketRequestModel)
-        hideLabel(label: dateInboundLabel)
+        inboundDatePicker.isHidden = dateInboundLabel.isHidden
         
-    }
-    
-    fileprivate func hideLabel (label: UILabel) {
-        
-        if inboundDatePicker.isHidden == true {
-            label.isHidden = true
-            
-        }
     }
     
     fileprivate func checkDatePicker(d: DatePicker) -> Bool {

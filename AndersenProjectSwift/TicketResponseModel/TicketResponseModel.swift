@@ -9,7 +9,6 @@
 import Alamofire
 import ObjectMapper
 import AlamofireObjectMapper
-import AlamofireNetworkActivityIndicator
 
 class TicketResponseModel: Mappable {
     
@@ -38,9 +37,6 @@ class TicketResponseModel: Mappable {
     func fetchResponse(ticketRequestModel: URLRequestConvertible) {
         
         Alamofire.request(ticketRequestModel).validate(statusCode: [200]).responseObject { (response: DataResponse<TicketResponseModel>) in
-            
-            NetworkActivityIndicatorManager.shared.isEnabled = true
-            NetworkActivityIndicatorManager.shared.startDelay = 2.0
             
             switch response.result {
             case.success:

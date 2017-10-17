@@ -8,9 +8,8 @@
 
 import UIKit
 import Alamofire
-import AlamofireNetworkActivityIndicator
 
-class TextField:  AutoCompleteTextField {
+class TextField: AutoCompleteTextField {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,39 +18,11 @@ class TextField:  AutoCompleteTextField {
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        self.onTextChange = { [weak self] string in
-            
-            let autocompletePlaceModelRequest = AutocompletePlaceRequestModel(str: string)
-            let request = Alamofire.request(autocompletePlaceModelRequest)
-            
-            
-            request.validate().responseArray
-                { (response: DataResponse<[AutocompletePlaceModel]>) in
-                    
-                    switch response.result {
-                    case.success:
-                        let autocompletePlaceModel = response.result.value
-                        guard let autocompletePlace = autocompletePlaceModel else { return }
-                        for place in autocompletePlace {
-                            if let placeLabel = place.label {
-                                self?.autoCompleteStrings = [placeLabel]
-                                
-                            }
-                        }
-                        
-                    case.failure:
-                        print("Error" + (response.debugDescription))
-                        request.cancel()
-                        
-                    }
-            }
-            
-        }
-        
+        fetchAutocompleteResponse()
     }
     
     typealias checkTextFieldClosure = () -> ()
+    
     
     //MARK: - Check Validation
     
@@ -88,7 +59,7 @@ class TextField:  AutoCompleteTextField {
         
         print("\n ", trimNumbers, "\n", trimWhiteSpaces.characters)
         
-        if trimNumbers.characters.count == 0
+        if trimNumbers.isEmpty
             && trimWhiteSpaces.characters.count > 0 {
             
             print("False")
@@ -117,6 +88,39 @@ class TextField:  AutoCompleteTextField {
         self.autoCompleteAttributes = attributes
     }
     
+    func fetchAutocompleteResponse() {
+        
+        self.onTextChange = { [weak self] string in
+            
+            let autocompletePlaceModelRequest = AutocompletePlaceRequestModel(str: string)
+            let request = Alamofire.request(autocompletePlaceModelRequest)
+            
+            
+            request.validate().responseArray
+                { (response: DataResponse<[AutocompletePlaceModel]>) in
+                    
+                    switch response.result {
+                    case.success:
+                        let autocompletePlaceModel = response.result.value
+                        guard let autocompletePlace = autocompletePlaceModel else { return }
+                        for place in autocompletePlace {
+                            if let placeLabel = place.label {
+                                self?.autoCompleteStrings = [placeLabel]
+                                
+                            }
+                        }
+                        
+                    case.failure:
+                        print("Error" + (response.debugDescription))
+                        request.cancel()
+                    }
+            }
+            
+        }
+        self.onSelect = {[weak self] string, indexpath in
+            
+        }
+    }
 }
 
 // MARK: - TextFieldDelegate
