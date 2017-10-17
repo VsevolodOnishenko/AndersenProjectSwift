@@ -6,7 +6,6 @@
 //  Copyright © 2017 Andersen. All rights reserved.
 //
 
-import UIKit
 import ObjectMapper
 import Alamofire
 
@@ -30,7 +29,6 @@ class TicketRequestModel: Mappable {
     
     convenience required init?(map: Map) {
         self.init()
-    
         
     }
     

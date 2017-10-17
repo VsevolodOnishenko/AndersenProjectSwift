@@ -21,31 +21,34 @@ class TextField:  AutoCompleteTextField {
         super.init(coder: aDecoder)
         
         self.onTextChange = { [weak self] string in
-            self?.autoCompleteStrings = ["String","2","Los Angeles"]
             
-            /*
             let autocompletePlaceModelRequest = AutocompletePlaceRequestModel(str: string)
-            Alamofire.request(autocompletePlaceModelRequest).validate().responseObject { (response: DataResponse<AutocompletePlaceModel>) in
-                
-                switch response.result {
-                case.success:
+            let request = Alamofire.request(autocompletePlaceModelRequest)
+            
+            
+            request.validate().responseArray
+                { (response: DataResponse<[AutocompletePlaceModel]>) in
                     
-                    let autocompletePlaceModel = response.result
-                    print("Some Info")
-                    print(autocompletePlaceModel)
-                    self?.autoCompleteStrings = ["1","2","3"]
-                case.failure:
-                    print("Error" + (response.debugDescription))
-                }
+                    switch response.result {
+                    case.success:
+                        let autocompletePlaceModel = response.result.value
+                        guard let autocompletePlace = autocompletePlaceModel else { return }
+                        for place in autocompletePlace {
+                            if let placeLabel = place.label {
+                                self?.autoCompleteStrings = [placeLabel]
+                                
+                            }
+                        }
+                        
+                    case.failure:
+                        print("Error" + (response.debugDescription))
+                        request.cancel()
+                        
+                    }
             }
-            */
             
         }
-        /*
-         self.onSelect = {
-         
-         }*/
-
+        
     }
     
     typealias checkTextFieldClosure = () -> ()
@@ -112,25 +115,6 @@ class TextField:  AutoCompleteTextField {
         attributes[NSForegroundColorAttributeName] = UIColor.black
         attributes[NSFontAttributeName] = UIFont(name: "HelveticaNeue-Bold", size: 12.0)
         self.autoCompleteAttributes = attributes
-    }
-    
-    
-    func fetchAutocompletePlaces(autocompletePlaceModelRequest: URLRequestConvertible) {
-        
-        Alamofire.request(autocompletePlaceModelRequest).validate().responseObject { (response: DataResponse<AutocompletePlaceModel>) in
-            
-            NetworkActivityIndicatorManager.shared.isEnabled = true
-            NetworkActivityIndicatorManager.shared.startDelay = 2.0
-            
-            switch response.result {
-            case.success:
-                let autocomplete = response.result.value
-                print("Some Info")
-                print(autocomplete!)
-            case.failure:
-                print("Error" + (response.debugDescription))
-            }
-        }
     }
     
 }

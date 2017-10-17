@@ -6,7 +6,6 @@
 //  Copyright © 2017 Andersen. All rights reserved.
 //
 
-import UIKit
 import Alamofire
 
 class AutocompletePlaceRequestModel {
@@ -14,11 +13,7 @@ class AutocompletePlaceRequestModel {
     var inputUser: String?
     
     init(str: String?) {
-       self.inputUser = str
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        self.inputUser = str
     }
     
     enum AutocompleteRequestModelError: Error {
@@ -46,8 +41,9 @@ extension AutocompletePlaceRequestModel: URLRequestConvertible {
         print("autocompleteBaseUrl \(autocompleteBaseUrl)")
         print("autocompleteApiKey \(autocompleteApiKey)")
         
-        
-        print(inputUser)
+        guard let inputUser = inputUser else {
+            throw AutocompleteRequestModelError.invalid
+        }
         
         let url = try autocompleteBaseUrl.asURL()
         let urlRequest = URLRequest(url: (url))
@@ -57,6 +53,7 @@ extension AutocompletePlaceRequestModel: URLRequestConvertible {
         ]
         
         print(urlRequest)
+        print(inputUser)
         return try URLEncoding.default.encode(urlRequest, with: params)
     }
 }

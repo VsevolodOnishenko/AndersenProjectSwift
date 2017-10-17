@@ -6,13 +6,10 @@
 //  Copyright © 2017 Andersen. All rights reserved.
 //
 
-import UIKit
 import Alamofire
 import ObjectMapper
 import AlamofireObjectMapper
 import AlamofireNetworkActivityIndicator
-
-//TODO: Change classes for new api
 
 class TicketResponseModel: Mappable {
     

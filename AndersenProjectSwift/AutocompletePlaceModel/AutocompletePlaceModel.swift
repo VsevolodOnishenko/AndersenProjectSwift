@@ -6,7 +6,6 @@
 //  Copyright © 2017 Andersen. All rights reserved.
 //
 
-import UIKit
 import ObjectMapper
 
 class AutocompletePlaceModel: Mappable {

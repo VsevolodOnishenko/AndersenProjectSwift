@@ -20,9 +20,7 @@ class TicketPlaces: BaseViewController {
     private var dataTask:URLSessionDataTask?
     
     var ticketRequestModel = TicketRequestModel()
-    
     private let segueIdentifierTicketDates = "toTicketDates"
-    
     typealias checkTextFieldClosure = () -> ()
     
     override func viewDidLoad() {
