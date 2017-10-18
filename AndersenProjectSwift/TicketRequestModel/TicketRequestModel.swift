@@ -67,9 +67,8 @@ extension TicketRequestModel: URLRequestConvertible {
         let url = try baseUrl.asURL()
         let urlRequest = URLRequest(url: url)
         var params: Parameters =  self.toJSON()
-        params["accessToken"] = accessToken
+        params["token"] = accessToken
         
-        print("\n", params)
         return try URLEncoding.default.encode(urlRequest, with: params)
         
     }

@@ -18,6 +18,9 @@ class TicketSearchResults: BaseViewController {
         
         print(ticketRequestModel.toJSON())//check pass data
         
+        let response = TicketResponseModel()
+        response.fetchResponse(ticketRequestModel: ticketRequestModel)
+        
     }
 }
 

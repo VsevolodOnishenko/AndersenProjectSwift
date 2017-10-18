@@ -19,17 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let object: [String: Any] = [:]
-        guard let request = TicketRequestModel(JSON: object) else {
-            print("not request model")
-            return false
-        }
-        guard let response = TicketResponseModel(JSON: object) else {
-            print("not response model")
-            return false
-        }
-        
-        response.fetchResponse(ticketRequestModel: request)
+//        let object: [String: Any] = [:]
+//        guard let request = TicketRequestModel(JSON: object) else {
+//            print("not request model")
+//            return false
+//        }
+//        guard let response = TicketResponseModel(JSON: object) else {
+//            print("not response model")
+//            return false
+//        }
+//        
+//        response.fetchResponse(ticketRequestModel: request)
         
         NetworkActivityIndicatorManager.shared.isEnabled = true
         NetworkActivityIndicatorManager.shared.startDelay = 2.0

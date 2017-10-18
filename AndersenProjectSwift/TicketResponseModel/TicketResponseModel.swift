@@ -34,24 +34,28 @@ class TicketResponseModel: Mappable {
         
     }
     
+    //TODO: End up with it
+    
     func fetchResponse(ticketRequestModel: URLRequestConvertible) {
         
-        Alamofire.request(ticketRequestModel).validate(statusCode: [200]).responseObject { (response: DataResponse<TicketResponseModel>) in
+        Alamofire.request(ticketRequestModel).validate(statusCode: 200..<300).responseJSON { (response: DataResponse<Any>) in
             
             switch response.result {
             case.success:
-                let ticketResponse = response.result.value
-                print("Some Info")
-                print(ticketResponse!)
+                if let json = response.result.value {
+                    print(json)
+                    
+                }
+                
             case.failure:
                 print("Error" + (response.debugDescription))
             }
         }
     }
     /*
-    func getTickets(HKT: String) -> [TicketType] {
-       return nil
-    }*/
+     func getTickets(HKT: String) -> [TicketType] {
+     return nil
+     }*/
 }
 
 
