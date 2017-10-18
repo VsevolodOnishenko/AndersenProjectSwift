@@ -11,6 +11,9 @@ import Alamofire
 
 class TextField: AutoCompleteTextField {
     
+    
+    var iataCode: String?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -90,11 +93,12 @@ class TextField: AutoCompleteTextField {
     
     func fetchAutocompleteResponse() {
         
+        var arrayValues: Array<String> = [] // for IATA codes
+        
         self.onTextChange = { [weak self] string in
             
             let autocompletePlaceModelRequest = AutocompletePlaceRequestModel(str: string)
             let request = Alamofire.request(autocompletePlaceModelRequest)
-            
             
             request.validate().responseArray
                 { (response: DataResponse<[AutocompletePlaceModel]>) in
@@ -102,24 +106,45 @@ class TextField: AutoCompleteTextField {
                     switch response.result {
                     case.success:
                         let autocompletePlaceModel = response.result.value
-                        guard let autocompletePlace = autocompletePlaceModel else { return }
+                        guard let autocompletePlace = autocompletePlaceModel else {
+                            return
+                        }
+                        var arrayPlaces: Array<String> = []
                         for place in autocompletePlace {
-                            if let placeLabel = place.label {
-                                self?.autoCompleteStrings = [placeLabel]
-                                
+                            if let placeLabel = place.label, let placeValue = place.value {
+                                arrayPlaces.append(placeLabel)
+                                arrayValues.append(placeValue)
                             }
                         }
+                        self?.autoCompleteStrings = arrayPlaces
                         
                     case.failure:
                         print("Error" + (response.debugDescription))
                         request.cancel()
                     }
+                    
             }
             
         }
+        
         self.onSelect = {[weak self] string, indexpath in
             
+            guard let array = self?.autoCompleteStrings else {
+                return
+            }
+            for i in array {
+                if self?.text == i {
+                    guard let index = array.index(of: i) else {
+                        return
+                    }
+                    self?.iataCode = arrayValues[index]
+                    print(arrayValues[index])
+                }
+                
+            }
+            
         }
+        
     }
 }
 

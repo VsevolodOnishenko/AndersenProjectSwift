@@ -78,8 +78,8 @@ class TicketPlaces: BaseViewController {
         
         if segue.identifier == segueIdentifierTicketDates {
             
-            ticketRequestModel.originPlace = originPlaceTextField.text
-            ticketRequestModel.destinationPlace = destinationPlaceTextField.text
+            ticketRequestModel.originPlace = originPlaceTextField.iataCode
+            ticketRequestModel.destinationPlace = destinationPlaceTextField.iataCode
             
             guard let ticketDatesViewController = segue.destination as? TicketDates else {
                 print("Error")

@@ -30,6 +30,8 @@ final class DatePicker: UIDatePicker {
     
     func compareInboundDatePicker (departureDate: Date, completion: compareDatePickerСlosure) -> Bool {
         
+        
+        if self.isHidden == true { return true }
         if departureDate > self.date {
             completion()
             return false
