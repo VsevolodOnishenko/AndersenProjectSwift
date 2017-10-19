@@ -18,8 +18,8 @@ class TicketSearchResults: BaseViewController {
         
         print(ticketRequestModel.toJSON())//check pass data
         
-        let response = TicketResponseModel()
-        response.fetchResponse(ticketRequestModel: ticketRequestModel)
+        let response = ResponseDataModel()
+       // response.fetchResponse(ticketRequestModel: ticketRequestModel) //TODO: Add closure in call of func
         
     }
 }

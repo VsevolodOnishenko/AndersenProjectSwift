@@ -10,27 +10,23 @@ import ObjectMapper
 
 class AutocompletePlaceModel: Mappable {
     
-    /*The 3 letter IATA location code of the given city or airport.
+    /*
+     The 3 letter IATA location code of the given city or airport.
      You can use this as an input parameter for a flight
-     or inspiration search.*/
+     or inspiration search.
+     */
     
     var value: String?
     
-    /*The name of this airport, in UTF-8 format, prefixed with
+    /*
+     The name of this airport, in UTF-8 format, prefixed with
      the name of the city if it is not already incorporated in
      the name of the airport, and appended with the location's
-     IATA code (as in value), enclosed in square brackets.*/
+     IATA code (as in value), enclosed in square brackets.
+     */
     
     var label: String?
-    
-    private enum Errors: String {
         
-        case valueIsEmpty = "Value is empty"
-        case labelIsEmpty = "Label is empty"
-        
-    }
-    
-    
     convenience required init?(map: Map) {
         self.init()
     }

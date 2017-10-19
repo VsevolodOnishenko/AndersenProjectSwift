@@ -63,7 +63,7 @@ class TextField: AutoCompleteTextField {
         print("\n ", trimNumbers, "\n", trimWhiteSpaces.characters)
         
         if trimNumbers.isEmpty
-            && trimWhiteSpaces.characters.count > 0 {
+            && !trimWhiteSpaces.isEmpty {
             
             print("False")
             return false
@@ -93,7 +93,7 @@ class TextField: AutoCompleteTextField {
     
     func fetchAutocompleteResponse() {
         
-        var arrayValues: Array<String> = [] // for IATA codes
+        var arrayValues: [String] = [] // for IATA codes
         
         self.onTextChange = { [weak self] string in
             
@@ -129,22 +129,9 @@ class TextField: AutoCompleteTextField {
         
         self.onSelect = {[weak self] string, indexpath in
             
-            guard let array = self?.autoCompleteStrings else {
-                return
-            }
-            for i in array {
-                if self?.text == i {
-                    guard let index = array.index(of: i) else {
-                        return
-                    }
-                    self?.iataCode = arrayValues[index]
-                    print(arrayValues[index])
-                }
-                
-            }
+            self?.iataCode = arrayValues[indexpath.row]
             
         }
-        
     }
 }
 

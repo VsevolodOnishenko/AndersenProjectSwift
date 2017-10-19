@@ -29,6 +29,7 @@
 		FABA6A7B1F8E36660094E218 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA6A7A1F8E36660094E218 /* AutoCompleteTextField.swift */; };
 		FABA6A7D1F8F8A100094E218 /* AutocompletePlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA6A7C1F8F8A100094E218 /* AutocompletePlaceModel.swift */; };
 		FABA6A7F1F90BF030094E218 /* AutocompletePlaceRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA6A7E1F90BF030094E218 /* AutocompletePlaceRequestModel.swift */; };
+		FABA6A831F987FE70094E218 /* ResponseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABA6A821F987FE70094E218 /* ResponseDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		FABA6A7A1F8E36660094E218 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoCompleteTextField.swift; path = CustomElements/AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		FABA6A7C1F8F8A100094E218 /* AutocompletePlaceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutocompletePlaceModel.swift; path = AndersenProjectSwift/AutocompletePlaceModel/AutocompletePlaceModel.swift; sourceTree = "<group>"; };
 		FABA6A7E1F90BF030094E218 /* AutocompletePlaceRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutocompletePlaceRequestModel.swift; path = AndersenProjectSwift/AutocompletePlaceRequestModel/AutocompletePlaceRequestModel.swift; sourceTree = "<group>"; };
+		FABA6A821F987FE70094E218 /* ResponseDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResponseDataModel.swift; path = AndersenProjectSwift/ResponseDataModel/ResponseDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 				FABA6A7E1F90BF030094E218 /* AutocompletePlaceRequestModel.swift */,
 				FABA6A7C1F8F8A100094E218 /* AutocompletePlaceModel.swift */,
 				FAA24D571F77E48D006DD8ED /* TicketRequestModel.swift */,
+				FABA6A821F987FE70094E218 /* ResponseDataModel.swift */,
 				FAA24D591F77E4B5006DD8ED /* TicketResponseModel.swift */,
 				FA08C5A71F7916F800451364 /* TicketUIModel.swift */,
 			);
@@ -322,6 +325,7 @@
 				FAA24D5A1F77E4B5006DD8ED /* TicketResponseModel.swift in Sources */,
 				FAA24D581F77E48D006DD8ED /* TicketRequestModel.swift in Sources */,
 				FA08C5A81F7916F800451364 /* TicketUIModel.swift in Sources */,
+				FABA6A831F987FE70094E218 /* ResponseDataModel.swift in Sources */,
 				FABA6A7D1F8F8A100094E218 /* AutocompletePlaceModel.swift in Sources */,
 				FA1B515B1F77D7FD00BD5B99 /* AndersenProjectSwift.xcdatamodeld in Sources */,
 				FA20C7B61F7A57DE003F3409 /* TicketType.swift in Sources */,
