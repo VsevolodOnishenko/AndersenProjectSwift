@@ -62,7 +62,7 @@ class TicketDates: BaseViewController {
             ticketRequestModel.departDate = departureDatePicker.convertDateToString(dateFormat: dateFormat)
             ticketRequestModel.returnDate = inboundDatePicker.convertDateToString(dateFormat: dateFormat)
             
-            guard let ticketResultsViewController = segue.destination as? TicketSearchResults else {
+            guard let ticketResultsViewController = segue.destination as? SearchResultsTableViewController else {
                 print("Error")
                 return
             }

@@ -18,10 +18,10 @@
 		FA20C7B61F7A57DE003F3409 /* TicketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20C7B51F7A57DE003F3409 /* TicketType.swift */; };
 		FA20C7B91F7A5824003F3409 /* TicketPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20C7B81F7A5824003F3409 /* TicketPlaces.swift */; };
 		FA20C7BB1F7A5860003F3409 /* TicketDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20C7BA1F7A5860003F3409 /* TicketDates.swift */; };
-		FA20C7BD1F7A6B15003F3409 /* TicketSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20C7BC1F7A6B15003F3409 /* TicketSearchResults.swift */; };
-		FA3396801F7E83EB00033CA5 /* TicketResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33967F1F7E83EB00033CA5 /* TicketResultCell.swift */; };
 		FA3396831F812D5600033CA5 /* BuyTicketScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3396821F812D5600033CA5 /* BuyTicketScreen.swift */; };
 		FA3396851F812FAB00033CA5 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3396841F812FAB00033CA5 /* DatePicker.swift */; };
+		FA493D1C1F9F403B00A1F9F1 /* CustomFoldingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA493D1B1F9F403B00A1F9F1 /* CustomFoldingCell.swift */; };
+		FA493D201F9F41A700A1F9F1 /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA493D1F1F9F41A700A1F9F1 /* SearchResultsTableViewController.swift */; };
 		FA63BB251F8B56A6000616EB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63BB241F8B56A6000616EB /* BaseViewController.swift */; };
 		FA92D7671F83751700CCA6CB /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92D7661F83751700CCA6CB /* TextField.swift */; };
 		FAA24D581F77E48D006DD8ED /* TicketRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA24D571F77E48D006DD8ED /* TicketRequestModel.swift */; };
@@ -48,10 +48,10 @@
 		FA20C7B51F7A57DE003F3409 /* TicketType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketType.swift; path = AndersenProjectSwift/TicketType/TicketType.swift; sourceTree = "<group>"; };
 		FA20C7B81F7A5824003F3409 /* TicketPlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketPlaces.swift; path = AndersenProjectSwift/TicketPlaces/TicketPlaces.swift; sourceTree = "<group>"; };
 		FA20C7BA1F7A5860003F3409 /* TicketDates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketDates.swift; path = AndersenProjectSwift/TicketDates/TicketDates.swift; sourceTree = "<group>"; };
-		FA20C7BC1F7A6B15003F3409 /* TicketSearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketSearchResults.swift; path = AndersenProjectSwift/TicketSearchResults/TicketSearchResults.swift; sourceTree = "<group>"; };
-		FA33967F1F7E83EB00033CA5 /* TicketResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketResultCell.swift; path = AndersenProjectSwift/TicketResultCell/TicketResultCell.swift; sourceTree = "<group>"; };
 		FA3396821F812D5600033CA5 /* BuyTicketScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BuyTicketScreen.swift; path = AndersenProjectSwift/BuyTicketScreen/BuyTicketScreen.swift; sourceTree = "<group>"; };
 		FA3396841F812FAB00033CA5 /* DatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePicker.swift; path = ../DatePicker.swift; sourceTree = "<group>"; };
+		FA493D1B1F9F403B00A1F9F1 /* CustomFoldingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomFoldingCell.swift; path = AndersenProjectSwift/CustomFoldingCell/CustomFoldingCell.swift; sourceTree = "<group>"; };
+		FA493D1F1F9F41A700A1F9F1 /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultsTableViewController.swift; path = AndersenProjectSwift/CustomElements/SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		FA63BB241F8B56A6000616EB /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = BaseView/BaseViewController.swift; sourceTree = "<group>"; };
 		FA92D7661F83751700CCA6CB /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = CustomElements/TextField.swift; sourceTree = "<group>"; };
 		FAA24D571F77E48D006DD8ED /* TicketRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketRequestModel.swift; path = AndersenProjectSwift/TicketRequestModel/TicketRequestModel.swift; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 				FA20C7B51F7A57DE003F3409 /* TicketType.swift */,
 				FA20C7B81F7A5824003F3409 /* TicketPlaces.swift */,
 				FA20C7BA1F7A5860003F3409 /* TicketDates.swift */,
-				FA20C7BC1F7A6B15003F3409 /* TicketSearchResults.swift */,
+				FA493D1F1F9F41A700A1F9F1 /* SearchResultsTableViewController.swift */,
 				FA3396821F812D5600033CA5 /* BuyTicketScreen.swift */,
 				FA3396811F7E83FE00033CA5 /* TicketResultCell */,
 			);
@@ -143,7 +143,7 @@
 		FA3396811F7E83FE00033CA5 /* TicketResultCell */ = {
 			isa = PBXGroup;
 			children = (
-				FA33967F1F7E83EB00033CA5 /* TicketResultCell.swift */,
+				FA493D1B1F9F403B00A1F9F1 /* CustomFoldingCell.swift */,
 			);
 			name = TicketResultCell;
 			sourceTree = "<group>";
@@ -255,6 +255,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/FoldingCell/FoldingCell.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -262,6 +263,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityIndicator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FoldingCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,14 +316,14 @@
 			files = (
 				FA3396851F812FAB00033CA5 /* DatePicker.swift in Sources */,
 				FA3396831F812D5600033CA5 /* BuyTicketScreen.swift in Sources */,
-				FA3396801F7E83EB00033CA5 /* TicketResultCell.swift in Sources */,
 				FA92D7671F83751700CCA6CB /* TextField.swift in Sources */,
 				FA1B51551F77D7FC00BD5B99 /* ViewController.swift in Sources */,
+				FA493D201F9F41A700A1F9F1 /* SearchResultsTableViewController.swift in Sources */,
 				FABA6A7F1F90BF030094E218 /* AutocompletePlaceRequestModel.swift in Sources */,
 				FA63BB251F8B56A6000616EB /* BaseViewController.swift in Sources */,
 				FA20C7B91F7A5824003F3409 /* TicketPlaces.swift in Sources */,
+				FA493D1C1F9F403B00A1F9F1 /* CustomFoldingCell.swift in Sources */,
 				FABA6A7B1F8E36660094E218 /* AutoCompleteTextField.swift in Sources */,
-				FA20C7BD1F7A6B15003F3409 /* TicketSearchResults.swift in Sources */,
 				FAA24D5A1F77E4B5006DD8ED /* TicketResponseModel.swift in Sources */,
 				FAA24D581F77E48D006DD8ED /* TicketRequestModel.swift in Sources */,
 				FA08C5A81F7916F800451364 /* TicketUIModel.swift in Sources */,
