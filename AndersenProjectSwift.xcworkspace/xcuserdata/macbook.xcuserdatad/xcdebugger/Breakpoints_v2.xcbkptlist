@@ -19,53 +19,5 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AndersenProjectSwift/TicketResponseModel/TicketResponseModel.swift"
-            timestampString = "530028577.03456"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "fetchResponse(ticketRequestModel:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "AndersenProjectSwift.TicketResponseModel.(fetchResponse (ticketRequestModel : Alamofire.URLRequestConvertible) -&gt; ()).(closure #1)"
-                  moduleName = "AndersenProjectSwift"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/macbook/Desktop/AndersenProjectSwift/AndersenProjectSwift/TicketResponseModel/TicketResponseModel.swift"
-                  timestampString = "530028611.378282"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "746">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "AndersenProjectSwift.TicketResponseModel.(fetchResponse (ticketRequestModel : Alamofire.URLRequestConvertible) -&gt; ()).(closure #1)"
-                  moduleName = "AndersenProjectSwift"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/macbook/Desktop/AndersenProjectSwift/AndersenProjectSwift/TicketResponseModel/TicketResponseModel.swift"
-                  timestampString = "530028611.381343"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "762">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
