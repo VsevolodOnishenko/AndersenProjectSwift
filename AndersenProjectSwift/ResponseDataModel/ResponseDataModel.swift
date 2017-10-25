@@ -48,11 +48,4 @@ class ResponseDataModel: Mappable {
                 }
         }
     }
-    
-    //
-    //    func getTickets(dict: [String: Any]) -> [TicketResponseModel] {
-    //
-    //
-    //    }
-    
 }

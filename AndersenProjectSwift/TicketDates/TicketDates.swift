@@ -17,7 +17,7 @@ class TicketDates: BaseViewController {
     @IBOutlet private weak var searchButton: UIButton!
     
     var ticketRequestModel = TicketRequestModel()
-    private let segueIdentifier = "toResultList"
+    private let segueIdentifier = "toResultTable"
     
     typealias compareDatePickerСlosure = () -> ()
     private let departureMaxTimeInterval: TimeInterval = (60 * 60 * 24 * 180)
@@ -25,12 +25,16 @@ class TicketDates: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupDatePickers()
+        searchButton.layer.cornerRadius = 15
+    }
+    
+    fileprivate func setupDatePickers() {
         
-        departureDatePicker.setupDate() //use default values in parameters
+        departureDatePicker.setupDate()
         inboundDatePicker.setupDate(timeInterval: departureMaxTimeInterval)
         inboundDatePicker.hideInboundDatePicker(ticketRequestModel: ticketRequestModel)
         dateInboundLabel.isHidden = inboundDatePicker.isHidden
-       
     }
     
     fileprivate func checkDatePicker(d: DatePicker) -> Bool {

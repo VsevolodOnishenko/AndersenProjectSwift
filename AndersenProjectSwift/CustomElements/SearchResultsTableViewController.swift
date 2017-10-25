@@ -11,27 +11,37 @@ import FoldingCell
 
 class SearchResultsTableViewController: UITableViewController {
     
-    
-    let rowsCount = 2 // count of tickets later
     var cellHeights: [CGFloat] = []
     var expandedCellIndexPath: IndexPath?
     var ticketRequestModel = TicketRequestModel()
+    var ticketResponseArray: [TicketResponseModel] = [] {
+        didSet {
+            setup()
+        }
+    }
     
     let closeCellHeight: CGFloat = 120
     let openCellHeight: CGFloat = 269
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
         
+        let response = ResponseDataModel()
+        response.fetchResponse(ticketRequestModel: ticketRequestModel) { models in
+            self.ticketResponseArray = models.map{$0}
+            
+        }
     }
     
     private func setup() {
-        cellHeights = Array(repeating: closeCellHeight, count: rowsCount) // add amount of ticket count in response
+        
+        cellHeights = Array(repeating: closeCellHeight, count: ticketResponseArray.count) // add amount of ticket count in response
         tableView.estimatedRowHeight = closeCellHeight
         tableView.rowHeight = UITableViewAutomaticDimension // TODO: Need to know more about it
-        tableView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background"))
-        tableView.backgroundView?.contentMode = .scaleAspectFit // FIXME: .scaleAspectFit now working
+        let backgroundView = UIImageView(image: #imageLiteral(resourceName: "background"))
+        tableView.backgroundView = backgroundView
+        tableView.backgroundView?.contentMode = .scaleAspectFill 
+        tableView.backgroundView?.alpha = 0.65
         tableView.separatorColor = .clear
     }
 }
@@ -39,7 +49,7 @@ class SearchResultsTableViewController: UITableViewController {
 extension SearchResultsTableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rowsCount
+        return ticketResponseArray.count
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -54,7 +64,10 @@ extension SearchResultsTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ticketResultCell", for: indexPath) as! FoldingCell
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ticketResultCell", for: indexPath) as! CustomFoldingCell
+        
+        cell.getTicket(ticketResponse: ticketResponseArray[indexPath.row], ticketRequest: ticketRequestModel)
         let durations: [TimeInterval] = [0.26, 0.2, 0.2]
         cell.durationsForExpandedState = durations
         cell.durationsForCollapsedState = durations

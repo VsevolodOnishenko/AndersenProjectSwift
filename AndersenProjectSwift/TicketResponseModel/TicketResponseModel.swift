@@ -27,13 +27,11 @@ class TicketResponseModel: Mappable {
         
         price <- map ["price"]
         airline <- map ["airline"]
-        flightNumber <- map ["flightNumber"]
-        departureAt <- map ["departureAt"]
-        returnAt <- map ["returnAt"]
-        expiresAt <- map ["expiresAt"]
-        
+        flightNumber <- map ["flight_number"]
+        departureAt <- map ["departure_at"]
+        returnAt <- map ["return_at"]
+        expiresAt <- map ["expires_at"]
     }
-    
 }
 
 
