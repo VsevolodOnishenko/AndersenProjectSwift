@@ -20,6 +20,7 @@ class TicketPlaces: BaseViewController {
     private var dataTask:URLSessionDataTask?
     
     var ticketRequestModel = TicketRequestModel()
+    var placeFullNameModel = PlaceFullNameModel()
     private let segueIdentifierTicketDates = "toTicketDates"
     typealias checkTextFieldClosure = () -> ()
     
@@ -80,12 +81,15 @@ class TicketPlaces: BaseViewController {
             
             ticketRequestModel.originPlace = originPlaceTextField.iataCode
             ticketRequestModel.destinationPlace = destinationPlaceTextField.iataCode
+            placeFullNameModel.fullNameDeparturePlace = originPlaceTextField.text
+            placeFullNameModel.fullNameArrivalPlace = destinationPlaceTextField.text
             
             guard let ticketDatesViewController = segue.destination as? TicketDates else {
                 print("Error")
                 return
             }
             ticketDatesViewController.ticketRequestModel = ticketRequestModel
+            ticketDatesViewController.placeFullNameModel = placeFullNameModel
         }
     }
 }

@@ -19,6 +19,14 @@ class CustomFoldingCell: FoldingCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var departureDateLabel: UILabel!
     
+    @IBOutlet weak var expiresLabel: UILabel!
+    @IBOutlet weak var airlineLabel: UILabel!
+    @IBOutlet weak var airlineLogoImage: UIImageView!
+    @IBOutlet weak var actionView: UIView!
+    
+    let departureDateFormat = "dd MMM yyyy HH:mm"
+    let expiresDateFormat = "dd MMM yyyy"
+    
     var number: Int = 0 {
         
         didSet {
@@ -26,22 +34,34 @@ class CustomFoldingCell: FoldingCell {
         }
     }
     
-    func getTicket(ticketResponse: TicketResponseModel, ticketRequest: TicketRequestModel) {
+    func getTicket(ticketResponse: TicketResponseModel, placeFullName: PlaceFullNameModel) {
         
-        self.arrivalPlace.text = ticketRequest.destinationPlace
-        self.departurePlace.text = ticketRequest.originPlace
-        self.priceLabel?.text = String(describing: ticketResponse.price)
-        self.departureDateLabel.text = ticketResponse.departureAt
+        self.arrivalPlace.text = placeFullName.fullNameArrivalPlace
+        self.departurePlace.text = placeFullName.fullNameDeparturePlace
+        self.priceLabel.text = ticketResponse.price?.description
+        self.airlineLabel.text = ticketResponse.airline
+        
+        if let expireDate = ticketResponse.expiresAt?.description {
+            self.expiresLabel.text = "\(dateConfig(str: expireDate, dateFormat: expiresDateFormat))"
+        }
+        
+        if let tempDate = ticketResponse.departureAt?.description {
+            self.departureDateLabel.text = "\(dateConfig(str: tempDate, dateFormat: departureDateFormat))"
+        }
     }
     
-    //MARK: - Handler methods
-    //TODO: Figure out outlets
+    //MARK: Date Configuration
     
-    func getTicketPrice( ticketPrice: Int? ) -> String {
+    private func dateConfig (str: String, dateFormat: String) -> String {
         
-        if ticketPrice != nil {
-            return String(describing: ticketPrice)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        let tempDate = dateFormatter.date(from: str)
+        if let tempDate = tempDate {
             
+            dateFormatter.dateFormat = dateFormat
+            let tempStr = dateFormatter.string(from: tempDate)
+            return tempStr
         }
         return ""
     }

@@ -14,6 +14,7 @@ class SearchResultsTableViewController: UITableViewController {
     var cellHeights: [CGFloat] = []
     var expandedCellIndexPath: IndexPath?
     var ticketRequestModel = TicketRequestModel()
+    var placeFullNameModel = PlaceFullNameModel()
     var ticketResponseArray: [TicketResponseModel] = [] {
         didSet {
             setup()
@@ -31,16 +32,22 @@ class SearchResultsTableViewController: UITableViewController {
             self.ticketResponseArray = models.map{$0}
             
         }
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
     }
     
     private func setup() {
         
-        cellHeights = Array(repeating: closeCellHeight, count: ticketResponseArray.count) // add amount of ticket count in response
+        cellHeights = Array(repeating: closeCellHeight, count: ticketResponseArray.count)
         tableView.estimatedRowHeight = closeCellHeight
         tableView.rowHeight = UITableViewAutomaticDimension // TODO: Need to know more about it
         let backgroundView = UIImageView(image: #imageLiteral(resourceName: "background"))
         tableView.backgroundView = backgroundView
-        tableView.backgroundView?.contentMode = .scaleAspectFill 
+        tableView.backgroundView?.contentMode = .scaleAspectFill
         tableView.backgroundView?.alpha = 0.65
         tableView.separatorColor = .clear
     }
@@ -67,7 +74,9 @@ extension SearchResultsTableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ticketResultCell", for: indexPath) as! CustomFoldingCell
         
-        cell.getTicket(ticketResponse: ticketResponseArray[indexPath.row], ticketRequest: ticketRequestModel)
+        cell.getTicket(ticketResponse: ticketResponseArray[indexPath.row], placeFullName: placeFullNameModel)
+        
+        tableView.reloadSections(NSIndexSet(index: indexPath.row) as IndexSet, with: .bottom)
         let durations: [TimeInterval] = [0.26, 0.2, 0.2]
         cell.durationsForExpandedState = durations
         cell.durationsForCollapsedState = durations

@@ -17,6 +17,7 @@ class TicketDates: BaseViewController {
     @IBOutlet private weak var searchButton: UIButton!
     
     var ticketRequestModel = TicketRequestModel()
+    var placeFullNameModel = PlaceFullNameModel()
     private let segueIdentifier = "toResultTable"
     
     typealias compareDatePickerСlosure = () -> ()
@@ -71,6 +72,7 @@ class TicketDates: BaseViewController {
                 return
             }
             ticketResultsViewController.ticketRequestModel = ticketRequestModel
+            ticketResultsViewController.placeFullNameModel = placeFullNameModel
         }
     }
 }
