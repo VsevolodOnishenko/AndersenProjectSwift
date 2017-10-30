@@ -11,18 +11,18 @@ import FoldingCell
 
 class CustomFoldingCell: FoldingCell {
     
-    @IBOutlet weak var closeNumberLabel: UILabel!
+    @IBOutlet private weak var closeNumberLabel: UILabel!
     
-    @IBOutlet weak var arrivalPlace: UILabel!
-    @IBOutlet weak var departurePlace: UILabel!
-    @IBOutlet weak var currencyLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var departureDateLabel: UILabel!
+    @IBOutlet private weak var arrivalPlace: UILabel!
+    @IBOutlet private weak var departurePlace: UILabel!
+    @IBOutlet private weak var currencyLabel: UILabel!
+    @IBOutlet private weak var priceLabel: UILabel!
+    @IBOutlet private weak var departureDateLabel: UILabel!
     
-    @IBOutlet weak var expiresLabel: UILabel!
-    @IBOutlet weak var airlineLabel: UILabel!
-    @IBOutlet weak var airlineLogoImage: UIImageView!
-    @IBOutlet weak var actionView: UIView!
+    @IBOutlet private weak var expiresLabel: UILabel!
+    @IBOutlet private weak var airlineLabel: UILabel!
+    @IBOutlet private weak var airlineLogoImage: UIImageView!
+    @IBOutlet private weak var actionView: UIView!
     
     let departureDateFormat = "dd MMM yyyy HH:mm"
     let expiresDateFormat = "dd MMM yyyy"
@@ -36,34 +36,37 @@ class CustomFoldingCell: FoldingCell {
     
     func getTicket(ticketResponse: TicketResponseModel, placeFullName: PlaceFullNameModel) {
         
-        self.arrivalPlace.text = placeFullName.fullNameArrivalPlace
-        self.departurePlace.text = placeFullName.fullNameDeparturePlace
-        self.priceLabel.text = ticketResponse.price?.description
-        self.airlineLabel.text = ticketResponse.airline
+        arrivalPlace.text = placeFullName.fullNameArrivalPlace
+        departurePlace.text = placeFullName.fullNameDeparturePlace
+        priceLabel.text = ticketResponse.price?.description
+        airlineLabel.text = ticketResponse.airline
         
         if let expireDate = ticketResponse.expiresAt?.description {
-            self.expiresLabel.text = "\(dateConfig(str: expireDate, dateFormat: expiresDateFormat))"
+            expiresLabel.text = expireDate.dateConfig(dateFormat: expiresDateFormat)
         }
         
         if let tempDate = ticketResponse.departureAt?.description {
-            self.departureDateLabel.text = "\(dateConfig(str: tempDate, dateFormat: departureDateFormat))"
+            departureDateLabel.text = tempDate.dateConfig(dateFormat: departureDateFormat)
         }
     }
     
-    //MARK: Date Configuration
-    
-    private func dateConfig (str: String, dateFormat: String) -> String {
+    @IBAction func addToFavoriteButtonPressed(_ sender: UIButton) {
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-        let tempDate = dateFormatter.date(from: str)
-        if let tempDate = tempDate {
-            
-            dateFormatter.dateFormat = dateFormat
-            let tempStr = dateFormatter.string(from: tempDate)
-            return tempStr
-        }
-        return ""
+        let managedObject = Ticket()
+        
+        managedObject.arrivalPlace = arrivalPlace.text
+        managedObject.departurePlace = departurePlace.text
+        managedObject.currency = currencyLabel.text
+        managedObject.price = priceLabel.text
+        managedObject.departureDate = departureDateLabel.text
+        managedObject.expires = expiresLabel.text
+        managedObject.airline = airlineLabel.text
+        
+        //TODO: Add airline number and logo later
+        
+        CoreDataManager.instance.saveContext()
+        print(managedObject)
+    
     }
     
     //MARK: - Nib Methods
@@ -81,6 +84,26 @@ class CustomFoldingCell: FoldingCell {
     override func animationDuration(_ itemIndex: NSInteger, type: FoldingCell.AnimationType) -> TimeInterval {
         let durations = [0.26, 0.2, 0.2]
         return durations[itemIndex]
+    }
+    
+}
+
+//MARK: Date Configuration
+
+extension String {
+    
+    func dateConfig (dateFormat: String) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        let tempDate = dateFormatter.date(from: self)
+        if let tempDate = tempDate {
+            
+            dateFormatter.dateFormat = dateFormat
+            let tempStr = dateFormatter.string(from: tempDate)
+            return tempStr
+        }
+        return ""
     }
     
 }

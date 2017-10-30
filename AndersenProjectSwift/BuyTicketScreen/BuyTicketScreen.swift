@@ -10,8 +10,8 @@ import UIKit
 
 class BuyTicketScreen: BaseViewController {
     
-    @IBOutlet weak var buyTicketView: UIView!
-    @IBOutlet weak var buyTicketMessageLabel: UILabel!
+    @IBOutlet private weak var buyTicketView: UIView!
+    @IBOutlet private weak var buyTicketMessageLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

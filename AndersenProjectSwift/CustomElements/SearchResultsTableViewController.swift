@@ -50,6 +50,7 @@ class SearchResultsTableViewController: UITableViewController {
         tableView.backgroundView?.contentMode = .scaleAspectFill
         tableView.backgroundView?.alpha = 0.65
         tableView.separatorColor = .clear
+        
     }
 }
 

@@ -22,6 +22,9 @@
 		FA493D1C1F9F403B00A1F9F1 /* CustomFoldingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA493D1B1F9F403B00A1F9F1 /* CustomFoldingCell.swift */; };
 		FA493D201F9F41A700A1F9F1 /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA493D1F1F9F41A700A1F9F1 /* SearchResultsTableViewController.swift */; };
 		FA63BB251F8B56A6000616EB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63BB241F8B56A6000616EB /* BaseViewController.swift */; };
+		FA7EC7501FA71EF200E8DD18 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7EC74F1FA71EF200E8DD18 /* CoreDataManager.swift */; };
+		FA7EC75F1FA72CB200E8DD18 /* Ticket+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7EC75D1FA72CB200E8DD18 /* Ticket+CoreDataClass.swift */; };
+		FA7EC7601FA72CB200E8DD18 /* Ticket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7EC75E1FA72CB200E8DD18 /* Ticket+CoreDataProperties.swift */; };
 		FA844E111FA1DCB800B92579 /* PlaceFullNameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA844E101FA1DCB800B92579 /* PlaceFullNameModel.swift */; };
 		FA92D7671F83751700CCA6CB /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92D7661F83751700CCA6CB /* TextField.swift */; };
 		FAA24D581F77E48D006DD8ED /* TicketRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA24D571F77E48D006DD8ED /* TicketRequestModel.swift */; };
@@ -52,6 +55,9 @@
 		FA493D1B1F9F403B00A1F9F1 /* CustomFoldingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomFoldingCell.swift; path = AndersenProjectSwift/CustomFoldingCell/CustomFoldingCell.swift; sourceTree = "<group>"; };
 		FA493D1F1F9F41A700A1F9F1 /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultsTableViewController.swift; path = AndersenProjectSwift/CustomElements/SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		FA63BB241F8B56A6000616EB /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = BaseView/BaseViewController.swift; sourceTree = "<group>"; };
+		FA7EC74F1FA71EF200E8DD18 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = AndersenProjectSwift/CoreData/CoreDataManager.swift; sourceTree = "<group>"; };
+		FA7EC75D1FA72CB200E8DD18 /* Ticket+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Ticket+CoreDataClass.swift"; path = "AndersenProjectSwift/CoreData/Ticket+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FA7EC75E1FA72CB200E8DD18 /* Ticket+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Ticket+CoreDataProperties.swift"; path = "AndersenProjectSwift/CoreData/Ticket+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FA844E101FA1DCB800B92579 /* PlaceFullNameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceFullNameModel.swift; path = AndersenProjectSwift/PlaceFullNameModel/PlaceFullNameModel.swift; sourceTree = "<group>"; };
 		FA92D7661F83751700CCA6CB /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = CustomElements/TextField.swift; sourceTree = "<group>"; };
 		FAA24D571F77E48D006DD8ED /* TicketRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketRequestModel.swift; path = AndersenProjectSwift/TicketRequestModel/TicketRequestModel.swift; sourceTree = "<group>"; };
@@ -112,8 +118,10 @@
 		FA1B51511F77D7FC00BD5B99 /* AndersenProjectSwift */ = {
 			isa = PBXGroup;
 			children = (
+				FA7EC74E1FA71DF100E8DD18 /* CoreData */,
 				FA63BB231F8B5651000616EB /* CustomElements */,
 				FA20C7B71F7A57E9003F3409 /* Screens */,
+				FA7EC73B1FA7003F00E8DD18 /* ViewModels */,
 				FAA24D5B1F77E4C6006DD8ED /* Models */,
 				FA1B51521F77D7FC00BD5B99 /* AppDelegate.swift */,
 				FA1B51541F77D7FC00BD5B99 /* ViewController.swift */,
@@ -157,6 +165,25 @@
 				FA3396841F812FAB00033CA5 /* DatePicker.swift */,
 			);
 			name = CustomElements;
+			sourceTree = "<group>";
+		};
+		FA7EC73B1FA7003F00E8DD18 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModels;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		FA7EC74E1FA71DF100E8DD18 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				FA7EC75D1FA72CB200E8DD18 /* Ticket+CoreDataClass.swift */,
+				FA7EC75E1FA72CB200E8DD18 /* Ticket+CoreDataProperties.swift */,
+				FA7EC74F1FA71EF200E8DD18 /* CoreDataManager.swift */,
+			);
+			name = CoreData;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		FAA24D5B1F77E4C6006DD8ED /* Models */ = {
@@ -317,13 +344,16 @@
 				FA3396851F812FAB00033CA5 /* DatePicker.swift in Sources */,
 				FA3396831F812D5600033CA5 /* BuyTicketScreen.swift in Sources */,
 				FA92D7671F83751700CCA6CB /* TextField.swift in Sources */,
+				FA7EC7601FA72CB200E8DD18 /* Ticket+CoreDataProperties.swift in Sources */,
 				FA1B51551F77D7FC00BD5B99 /* ViewController.swift in Sources */,
 				FA493D201F9F41A700A1F9F1 /* SearchResultsTableViewController.swift in Sources */,
 				FABA6A7F1F90BF030094E218 /* AutocompletePlaceRequestModel.swift in Sources */,
 				FA63BB251F8B56A6000616EB /* BaseViewController.swift in Sources */,
 				FA20C7B91F7A5824003F3409 /* TicketPlaces.swift in Sources */,
 				FA493D1C1F9F403B00A1F9F1 /* CustomFoldingCell.swift in Sources */,
+				FA7EC7501FA71EF200E8DD18 /* CoreDataManager.swift in Sources */,
 				FABA6A7B1F8E36660094E218 /* AutoCompleteTextField.swift in Sources */,
+				FA7EC75F1FA72CB200E8DD18 /* Ticket+CoreDataClass.swift in Sources */,
 				FAA24D5A1F77E4B5006DD8ED /* TicketResponseModel.swift in Sources */,
 				FAA24D581F77E48D006DD8ED /* TicketRequestModel.swift in Sources */,
 				FABA6A831F987FE70094E218 /* ResponseDataModel.swift in Sources */,
