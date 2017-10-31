@@ -8,6 +8,7 @@
 
 import UIKit
 import FoldingCell
+import CoreData
 
 class SearchResultsTableViewController: UITableViewController {
     
@@ -15,6 +16,7 @@ class SearchResultsTableViewController: UITableViewController {
     var expandedCellIndexPath: IndexPath?
     var ticketRequestModel = TicketRequestModel()
     var placeFullNameModel = PlaceFullNameModel()
+    var flag = TabBar()
     var ticketResponseArray: [TicketResponseModel] = [] {
         didSet {
             setup()
@@ -57,9 +59,21 @@ class SearchResultsTableViewController: UITableViewController {
 extension SearchResultsTableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if flag.flagFavoriteIsActive == true {
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Ticket")
+            do {
+                guard let fetchArray = try CoreDataManager.persistentContainer.viewContext.fetch(fetchRequest)
+                    as? [Ticket] else { return 0 }
+                return fetchArray.count
+            } catch {
+                assertionFailure()
+            }
+        }
+        
         return ticketResponseArray.count
     }
-    
+
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard case let cell as CustomFoldingCell = cell else {
             return
@@ -75,7 +89,9 @@ extension SearchResultsTableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ticketResultCell", for: indexPath) as! CustomFoldingCell
         
-        cell.getTicket(ticketResponse: ticketResponseArray[indexPath.row], placeFullName: placeFullNameModel)
+        
+        //cell.getTicket(ticketResponse: ticketResponseArray[indexPath.row], placeFullName: placeFullNameModel)
+        cell.getTicketFromCoreData()
         
         tableView.reloadSections(NSIndexSet(index: indexPath.row) as IndexSet, with: .bottom)
         let durations: [TimeInterval] = [0.26, 0.2, 0.2]

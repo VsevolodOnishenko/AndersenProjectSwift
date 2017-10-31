@@ -8,6 +8,7 @@
 
 import UIKit
 import FoldingCell
+import CoreData
 
 class CustomFoldingCell: FoldingCell {
     
@@ -50,22 +51,46 @@ class CustomFoldingCell: FoldingCell {
         }
     }
     
+    //MARK: - CoreData methods
+    
+    func fetchTickets() -> [Any] {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Ticket")
+        return try! CoreDataManager.persistentContainer.viewContext.fetch(fetchRequest) //error handle later unwrapped later
+    }
+    
+    func getTicketFromCoreData() {
+        
+        guard let array = fetchTickets() as? [Ticket] else { return }
+        
+        for item in array {
+            
+            arrivalPlace.text = item.arrivalPlace
+            departurePlace.text = item.departurePlace
+            priceLabel.text = item.price
+            airlineLabel.text = item.airline
+            expiresLabel.text = item.expires
+            departureDateLabel.text = item.departureDate
+        }
+    }
+    
+    //MARK: - Actions
+    
     @IBAction func addToFavoriteButtonPressed(_ sender: UIButton) {
+       
+        let ticketObject: Ticket = NSEntityDescription.insertNewObject(forEntityName: "Ticket", into: CoreDataManager.persistentContainer.viewContext) as! Ticket
         
-        let managedObject = Ticket()
-        
-        managedObject.arrivalPlace = arrivalPlace.text
-        managedObject.departurePlace = departurePlace.text
-        managedObject.currency = currencyLabel.text
-        managedObject.price = priceLabel.text
-        managedObject.departureDate = departureDateLabel.text
-        managedObject.expires = expiresLabel.text
-        managedObject.airline = airlineLabel.text
+        ticketObject.arrivalPlace = arrivalPlace.text
+        ticketObject.departurePlace = departurePlace.text
+        ticketObject.currency = currencyLabel.text
+        ticketObject.price = priceLabel.text
+        ticketObject.departureDate = departureDateLabel.text
+        ticketObject.expires = expiresLabel.text
+        ticketObject.airline = airlineLabel.text
         
         //TODO: Add airline number and logo later
-        
-        CoreDataManager.instance.saveContext()
-        print(managedObject)
+    
+        print(ticketObject)
     
     }
     

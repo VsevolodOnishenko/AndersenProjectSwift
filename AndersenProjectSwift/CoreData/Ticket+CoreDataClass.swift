@@ -12,8 +12,4 @@ import CoreData
 
 public class Ticket: NSManagedObject {
     
-    private convenience init() {
-        
-        self.init(entity: CoreDataManager.instance.entityForName(entityName: "Ticket"), insertInto:CoreDataManager.instance.managedObjectContext)
-    }
 }
