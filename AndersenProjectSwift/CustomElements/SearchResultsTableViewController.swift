@@ -16,25 +16,18 @@ class SearchResultsTableViewController: UITableViewController {
     var expandedCellIndexPath: IndexPath?
     var ticketRequestModel = TicketRequestModel()
     var placeFullNameModel = PlaceFullNameModel()
-    var flag = TabBar()
-    var ticketResponseArray: [TicketResponseModel] = [] {
+    var ticketArray: [Any] = [] {
         didSet {
             setup()
         }
     }
-    
+       
     let closeCellHeight: CGFloat = 120
     let openCellHeight: CGFloat = 269
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let response = ResponseDataModel()
-        response.fetchResponse(ticketRequestModel: ticketRequestModel) { models in
-            self.ticketResponseArray = models.map{$0}
-            
-        }
-        
+        detectDataSource()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,7 +37,7 @@ class SearchResultsTableViewController: UITableViewController {
     
     private func setup() {
         
-        cellHeights = Array(repeating: closeCellHeight, count: ticketResponseArray.count)
+        cellHeights = Array(repeating: closeCellHeight, count: ticketArray.count)
         tableView.estimatedRowHeight = closeCellHeight
         tableView.rowHeight = UITableViewAutomaticDimension // TODO: Need to know more about it
         let backgroundView = UIImageView(image: #imageLiteral(resourceName: "background"))
@@ -54,24 +47,52 @@ class SearchResultsTableViewController: UITableViewController {
         tableView.separatorColor = .clear
         
     }
+    
+    fileprivate func fetchTicketArray() {
+        
+        let response = ResponseDataModel()
+        response.fetchResponse(ticketRequestModel: ticketRequestModel) {
+            models in self.ticketArray = models.map{$0}
+            
+        }
+    }
+    
+    fileprivate func fetchCoreDataArray() {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Ticket")
+        
+        do {
+            guard let fetchArray = try CoreDataManager.persistentContainer.viewContext.fetch(fetchRequest)
+                as? [Ticket] else { return }
+            
+            ticketArray = fetchArray.map{$0}
+            
+        } catch {
+            assertionFailure()
+        }
+    }
+    
+    fileprivate func detectDataSource() -> [Any] {
+        
+        if self.tabBarController?.selectedIndex == TabBar.TabBarIndex.first.rawValue {
+            
+            fetchTicketArray()
+            return ticketArray
+    
+        } else if self.tabBarController?.selectedIndex == TabBar.TabBarIndex.second.rawValue {
+            
+            fetchCoreDataArray()
+            return ticketArray
+        }
+        return ticketArray
+    }
 }
 
 extension SearchResultsTableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if flag.flagFavoriteIsActive == true {
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Ticket")
-            do {
-                guard let fetchArray = try CoreDataManager.persistentContainer.viewContext.fetch(fetchRequest)
-                    as? [Ticket] else { return 0 }
-                return fetchArray.count
-            } catch {
-                assertionFailure()
-            }
-        }
-        
-        return ticketResponseArray.count
+        return ticketArray.count
     }
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -89,9 +110,13 @@ extension SearchResultsTableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ticketResultCell", for: indexPath) as! CustomFoldingCell
         
-        
-        //cell.getTicket(ticketResponse: ticketResponseArray[indexPath.row], placeFullName: placeFullNameModel)
-        cell.getTicketFromCoreData()
+        if ticketArray is [Ticket] {
+            cell.getTicketFromCoreData(coreDataTicket: ticketArray[indexPath.row] as! Ticket)
+            
+        } else {
+            
+            cell.getTicket(ticketResponse: ticketArray[indexPath.row] as! TicketResponseModel, placeFullName: placeFullNameModel)
+        }
         
         tableView.reloadSections(NSIndexSet(index: indexPath.row) as IndexSet, with: .bottom)
         let durations: [TimeInterval] = [0.26, 0.2, 0.2]
@@ -101,6 +126,7 @@ extension SearchResultsTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return cellHeights[indexPath.row]
     }
     

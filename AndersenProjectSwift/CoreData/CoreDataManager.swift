@@ -73,8 +73,7 @@ class CoreDataManager {
                 }
             }
         }
-        
     }
-    
+
 }
 

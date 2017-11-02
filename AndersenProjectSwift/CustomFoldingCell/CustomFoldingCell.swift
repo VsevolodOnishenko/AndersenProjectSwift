@@ -53,25 +53,15 @@ class CustomFoldingCell: FoldingCell {
     
     //MARK: - CoreData methods
     
-    func fetchTickets() -> [Any] {
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Ticket")
-        return try! CoreDataManager.persistentContainer.viewContext.fetch(fetchRequest) //error handle later unwrapped later
-    }
     
-    func getTicketFromCoreData() {
-        
-        guard let array = fetchTickets() as? [Ticket] else { return }
-        
-        for item in array {
-            
-            arrivalPlace.text = item.arrivalPlace
-            departurePlace.text = item.departurePlace
-            priceLabel.text = item.price
-            airlineLabel.text = item.airline
-            expiresLabel.text = item.expires
-            departureDateLabel.text = item.departureDate
-        }
+    func getTicketFromCoreData(coreDataTicket: Ticket) {
+       
+            arrivalPlace.text = coreDataTicket.arrivalPlace
+            departurePlace.text = coreDataTicket.departurePlace
+            priceLabel.text = coreDataTicket.price
+            airlineLabel.text = coreDataTicket.airline
+            expiresLabel.text = coreDataTicket.expires
+            departureDateLabel.text = coreDataTicket.departureDate
     }
     
     //MARK: - Actions
@@ -88,8 +78,14 @@ class CustomFoldingCell: FoldingCell {
         ticketObject.expires = expiresLabel.text
         ticketObject.airline = airlineLabel.text
         
+        do {
+           try CoreDataManager.persistentContainer.viewContext.save()
+            
+        } catch {
+            assertionFailure()
+        }
+       
         //TODO: Add airline number and logo later
-    
         print(ticketObject)
     
     }

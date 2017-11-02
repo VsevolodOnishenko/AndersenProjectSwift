@@ -58,7 +58,7 @@ open class AutoCompleteTextField: UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
-        //setupAutocompleteTable(superview!)
+        setupAutocompleteTable(superview!)
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -74,7 +74,7 @@ open class AutoCompleteTextField: UITextField {
     open override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         commonInit()
-        setupAutocompleteTable(newSuperview!)
+        //setupAutocompleteTable(newSuperview!)
     }
     
     fileprivate func commonInit(){

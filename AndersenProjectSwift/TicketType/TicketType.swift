@@ -25,13 +25,7 @@ class TicketType: BaseViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard let ticketPlacesNavigationController = segue.destination as? UINavigationController
-            else {
-                print("Error")
-                return
-        }
-        
-        guard let ticketPlacesViewController = ticketPlacesNavigationController.topViewController as? TicketPlaces else {
+        guard let ticketPlacesViewController = segue.destination as? TicketPlaces else {
             print("Error")
             return
         }
