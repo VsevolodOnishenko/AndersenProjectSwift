@@ -8,7 +8,9 @@
 
 import UIKit
 
-class TabBar: UITabBarController {
+final class TabBar: UITabBarController {
+    
+    var onSelectedSegment: ((Int) -> ())?
  
     enum TabBarIndex: Int {
         

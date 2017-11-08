@@ -27,11 +27,13 @@ class SearchResultsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        detectDataSource()
+        
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        _ = detectDataSource()
         tableView.reloadData()
     }
     
@@ -74,17 +76,13 @@ class SearchResultsTableViewController: UITableViewController {
     
     fileprivate func detectDataSource() -> [Any] {
         
-        if self.tabBarController?.selectedIndex == TabBar.TabBarIndex.first.rawValue {
-            
+        if tabBarController?.selectedIndex == 0 {
             fetchTicketArray()
             return ticketArray
-    
-        } else if self.tabBarController?.selectedIndex == TabBar.TabBarIndex.second.rawValue {
-            
+        } else {
             fetchCoreDataArray()
             return ticketArray
         }
-        return ticketArray
     }
 }
 
