@@ -288,7 +288,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WXC-bD-qOY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2964" y="-278"/>
+            <point key="canvasLocation" x="2964" y="-278.41079460269867"/>
         </scene>
         <!--Search Results Table View Controller-->
         <scene sceneID="fez-Nl-5YB">
@@ -432,16 +432,41 @@
                                                     <color key="textColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добавлено:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IPN-0f-tch">
+                                                    <rect key="frame" x="8" y="32" width="93" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="93" id="CKb-xK-DKl"/>
+                                                        <constraint firstAttribute="height" constant="21" id="Kbk-xJ-CrY"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yi7-m4-rxu">
+                                                    <rect key="frame" x="8" y="50" width="90" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="90" id="03H-M7-xYq"/>
+                                                        <constraint firstAttribute="height" constant="21" id="8aK-PA-Zj5"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstItem="3QW-LT-7Tt" firstAttribute="top" secondItem="jCB-gI-tks" secondAttribute="top" id="1Tu-hH-iyg"/>
+                                                <constraint firstItem="IPN-0f-tch" firstAttribute="top" secondItem="MhB-fn-pyG" secondAttribute="bottom" constant="3" id="40n-Ea-afh"/>
                                                 <constraint firstItem="8Je-33-pq1" firstAttribute="leading" secondItem="3QW-LT-7Tt" secondAttribute="trailing" id="Itj-Tl-r9E"/>
                                                 <constraint firstItem="MhB-fn-pyG" firstAttribute="leading" secondItem="jCB-gI-tks" secondAttribute="leading" constant="8" id="Iz5-aU-Hn3"/>
                                                 <constraint firstItem="3QW-LT-7Tt" firstAttribute="leading" secondItem="jCB-gI-tks" secondAttribute="leading" id="Uyy-Fu-KUZ"/>
+                                                <constraint firstItem="IPN-0f-tch" firstAttribute="leading" secondItem="jCB-gI-tks" secondAttribute="leading" constant="8" id="cdY-Xg-Rd7"/>
+                                                <constraint firstItem="Yi7-m4-rxu" firstAttribute="top" secondItem="MhB-fn-pyG" secondAttribute="bottom" constant="21" id="gce-ek-CPr"/>
                                                 <constraint firstAttribute="trailing" secondItem="8Je-33-pq1" secondAttribute="trailing" id="gn0-vp-Umx"/>
                                                 <constraint firstAttribute="height" constant="108" id="j9Q-8S-0lj"/>
                                                 <constraint firstItem="8Je-33-pq1" firstAttribute="top" secondItem="jCB-gI-tks" secondAttribute="top" id="qCk-zm-xDv"/>
+                                                <constraint firstItem="Yi7-m4-rxu" firstAttribute="leading" secondItem="jCB-gI-tks" secondAttribute="leading" constant="8" id="rD9-2R-t56"/>
                                                 <constraint firstItem="MhB-fn-pyG" firstAttribute="top" secondItem="jCB-gI-tks" secondAttribute="top" constant="8" id="sNr-cG-7uS"/>
                                                 <constraint firstAttribute="bottom" secondItem="8Je-33-pq1" secondAttribute="bottom" id="yIY-1v-EeH"/>
                                             </constraints>
@@ -555,6 +580,9 @@
                                                                 <constraint firstAttribute="width" constant="30" id="kUS-Qp-Ed4"/>
                                                             </constraints>
                                                             <state key="normal" image="phone"/>
+                                                            <connections>
+                                                                <action selector="clearCoreData:" destination="Nf9-kq-zFy" eventType="touchUpInside" id="RbQ-Y0-5Jh"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="KjH-yB-Qk2">
                                                             <rect key="frame" x="232" y="30" width="30" height="30"/>
@@ -644,6 +672,8 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="actionView" destination="rH1-iG-1cC" id="YaH-Iz-hFO"/>
+                                    <outlet property="addDataLabel" destination="Yi7-m4-rxu" id="6dT-Qm-LCy"/>
+                                    <outlet property="addLabel" destination="IPN-0f-tch" id="U9y-cr-Vrs"/>
                                     <outlet property="airlineLabel" destination="ZCz-ol-utR" id="Oj2-SE-8Ma"/>
                                     <outlet property="airlineLogoImage" destination="hJo-Uf-MXw" id="jjh-TF-mSz"/>
                                     <outlet property="arrivalPlace" destination="Xxd-Y4-ptx" id="jh2-Rt-2aZ"/>
@@ -660,10 +690,6 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Nf9-kq-zFy" id="95F-Kc-x8y"/>
-                            <outlet property="delegate" destination="Nf9-kq-zFy" id="fXO-Db-2bw"/>
-                        </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="Cgf-WW-dNZ"/>
                     <toolbarItems/>

@@ -10,8 +10,6 @@ import UIKit
 
 final class TabBar: UITabBarController {
     
-    var onSelectedSegment: ((Int) -> ())?
- 
     enum TabBarIndex: Int {
         
         case first = 0

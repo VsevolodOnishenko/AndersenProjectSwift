@@ -1,9 +1,9 @@
 //
 //  Ticket+CoreDataClass.swift
-//  AndersenProjectSwift
+//  
 //
-//  Created by macbook on 30.10.17.
-//  Copyright © 2017 Andersen. All rights reserved.
+//  Created by macbook on 08.11.17.
+//
 //
 
 import Foundation
@@ -11,5 +11,5 @@ import CoreData
 
 
 public class Ticket: NSManagedObject {
-    
+
 }

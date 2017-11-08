@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		079801C672A8229474DEA3C8 /* Pods_AndersenProjectSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15D22AE8B5DE6B02A04825F /* Pods_AndersenProjectSwift.framework */; };
 		FA01395A1FA87D040027CEBF /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0139591FA87D040027CEBF /* TabBar.swift */; };
+		FA190CCF1FB301630092C9E2 /* CustomDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA190CCE1FB301630092C9E2 /* CustomDataSource.swift */; };
+		FA190CD41FB341F90092C9E2 /* Ticket+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA190CD21FB341F90092C9E2 /* Ticket+CoreDataClass.swift */; };
+		FA190CD51FB341F90092C9E2 /* Ticket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA190CD31FB341F90092C9E2 /* Ticket+CoreDataProperties.swift */; };
 		FA1B51531F77D7FC00BD5B99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B51521F77D7FC00BD5B99 /* AppDelegate.swift */; };
 		FA1B51551F77D7FC00BD5B99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B51541F77D7FC00BD5B99 /* ViewController.swift */; };
 		FA1B51581F77D7FC00BD5B99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA1B51561F77D7FC00BD5B99 /* Main.storyboard */; };
@@ -24,8 +27,6 @@
 		FA493D201F9F41A700A1F9F1 /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA493D1F1F9F41A700A1F9F1 /* SearchResultsTableViewController.swift */; };
 		FA63BB251F8B56A6000616EB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63BB241F8B56A6000616EB /* BaseViewController.swift */; };
 		FA7EC7501FA71EF200E8DD18 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7EC74F1FA71EF200E8DD18 /* CoreDataManager.swift */; };
-		FA7EC75F1FA72CB200E8DD18 /* Ticket+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7EC75D1FA72CB200E8DD18 /* Ticket+CoreDataClass.swift */; };
-		FA7EC7601FA72CB200E8DD18 /* Ticket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7EC75E1FA72CB200E8DD18 /* Ticket+CoreDataProperties.swift */; };
 		FA844E111FA1DCB800B92579 /* PlaceFullNameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA844E101FA1DCB800B92579 /* PlaceFullNameModel.swift */; };
 		FA92D7671F83751700CCA6CB /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92D7661F83751700CCA6CB /* TextField.swift */; };
 		FAA24D581F77E48D006DD8ED /* TicketRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA24D571F77E48D006DD8ED /* TicketRequestModel.swift */; };
@@ -41,6 +42,9 @@
 		B15D22AE8B5DE6B02A04825F /* Pods_AndersenProjectSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AndersenProjectSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE4AF94BDEB20C9F3AEE6DAF /* Pods-AndersenProjectSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AndersenProjectSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-AndersenProjectSwift/Pods-AndersenProjectSwift.release.xcconfig"; sourceTree = "<group>"; };
 		FA0139591FA87D040027CEBF /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBar.swift; path = AndersenProjectSwift/TabBar/TabBar.swift; sourceTree = "<group>"; };
+		FA190CCE1FB301630092C9E2 /* CustomDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomDataSource.swift; path = CustomElements/CustomDataSource.swift; sourceTree = "<group>"; };
+		FA190CD21FB341F90092C9E2 /* Ticket+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Ticket+CoreDataClass.swift"; path = "AndersenProjectSwift/CoreData/Ticket+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FA190CD31FB341F90092C9E2 /* Ticket+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Ticket+CoreDataProperties.swift"; path = "AndersenProjectSwift/CoreData/Ticket+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FA1B514F1F77D7FC00BD5B99 /* AndersenProjectSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AndersenProjectSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1B51521F77D7FC00BD5B99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA1B51541F77D7FC00BD5B99 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,8 +62,6 @@
 		FA493D1F1F9F41A700A1F9F1 /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultsTableViewController.swift; path = AndersenProjectSwift/CustomElements/SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		FA63BB241F8B56A6000616EB /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = BaseView/BaseViewController.swift; sourceTree = "<group>"; };
 		FA7EC74F1FA71EF200E8DD18 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = AndersenProjectSwift/CoreData/CoreDataManager.swift; sourceTree = "<group>"; };
-		FA7EC75D1FA72CB200E8DD18 /* Ticket+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Ticket+CoreDataClass.swift"; path = "AndersenProjectSwift/CoreData/Ticket+CoreDataClass.swift"; sourceTree = "<group>"; };
-		FA7EC75E1FA72CB200E8DD18 /* Ticket+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Ticket+CoreDataProperties.swift"; path = "AndersenProjectSwift/CoreData/Ticket+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FA844E101FA1DCB800B92579 /* PlaceFullNameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceFullNameModel.swift; path = AndersenProjectSwift/PlaceFullNameModel/PlaceFullNameModel.swift; sourceTree = "<group>"; };
 		FA92D7661F83751700CCA6CB /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = CustomElements/TextField.swift; sourceTree = "<group>"; };
 		FAA24D571F77E48D006DD8ED /* TicketRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketRequestModel.swift; path = AndersenProjectSwift/TicketRequestModel/TicketRequestModel.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				FA63BB241F8B56A6000616EB /* BaseViewController.swift */,
 				FA92D7661F83751700CCA6CB /* TextField.swift */,
 				FA3396841F812FAB00033CA5 /* DatePicker.swift */,
+				FA190CCE1FB301630092C9E2 /* CustomDataSource.swift */,
 			);
 			name = CustomElements;
 			sourceTree = "<group>";
@@ -181,8 +184,8 @@
 		FA7EC74E1FA71DF100E8DD18 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				FA7EC75D1FA72CB200E8DD18 /* Ticket+CoreDataClass.swift */,
-				FA7EC75E1FA72CB200E8DD18 /* Ticket+CoreDataProperties.swift */,
+				FA190CD21FB341F90092C9E2 /* Ticket+CoreDataClass.swift */,
+				FA190CD31FB341F90092C9E2 /* Ticket+CoreDataProperties.swift */,
 				FA7EC74F1FA71EF200E8DD18 /* CoreDataManager.swift */,
 			);
 			name = CoreData;
@@ -347,26 +350,27 @@
 				FA3396851F812FAB00033CA5 /* DatePicker.swift in Sources */,
 				FA3396831F812D5600033CA5 /* BuyTicketScreen.swift in Sources */,
 				FA92D7671F83751700CCA6CB /* TextField.swift in Sources */,
-				FA7EC7601FA72CB200E8DD18 /* Ticket+CoreDataProperties.swift in Sources */,
 				FA1B51551F77D7FC00BD5B99 /* ViewController.swift in Sources */,
 				FA493D201F9F41A700A1F9F1 /* SearchResultsTableViewController.swift in Sources */,
 				FABA6A7F1F90BF030094E218 /* AutocompletePlaceRequestModel.swift in Sources */,
 				FA63BB251F8B56A6000616EB /* BaseViewController.swift in Sources */,
 				FA20C7B91F7A5824003F3409 /* TicketPlaces.swift in Sources */,
 				FA493D1C1F9F403B00A1F9F1 /* CustomFoldingCell.swift in Sources */,
+				FA190CD51FB341F90092C9E2 /* Ticket+CoreDataProperties.swift in Sources */,
 				FA7EC7501FA71EF200E8DD18 /* CoreDataManager.swift in Sources */,
 				FABA6A7B1F8E36660094E218 /* AutoCompleteTextField.swift in Sources */,
-				FA7EC75F1FA72CB200E8DD18 /* Ticket+CoreDataClass.swift in Sources */,
 				FAA24D5A1F77E4B5006DD8ED /* TicketResponseModel.swift in Sources */,
 				FAA24D581F77E48D006DD8ED /* TicketRequestModel.swift in Sources */,
 				FABA6A831F987FE70094E218 /* ResponseDataModel.swift in Sources */,
 				FABA6A7D1F8F8A100094E218 /* AutocompletePlaceModel.swift in Sources */,
+				FA190CD41FB341F90092C9E2 /* Ticket+CoreDataClass.swift in Sources */,
 				FA844E111FA1DCB800B92579 /* PlaceFullNameModel.swift in Sources */,
 				FA1B515B1F77D7FD00BD5B99 /* AndersenProjectSwift.xcdatamodeld in Sources */,
 				FA20C7B61F7A57DE003F3409 /* TicketType.swift in Sources */,
 				FA1B51531F77D7FC00BD5B99 /* AppDelegate.swift in Sources */,
 				FA20C7BB1F7A5860003F3409 /* TicketDates.swift in Sources */,
 				FA01395A1FA87D040027CEBF /* TabBar.swift in Sources */,
+				FA190CCF1FB301630092C9E2 /* CustomDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

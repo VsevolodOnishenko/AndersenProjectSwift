@@ -30,7 +30,7 @@ class TicketDates: BaseViewController {
         searchButton.layer.cornerRadius = 15
     }
     
-    fileprivate func setupDatePickers() {
+    private func setupDatePickers() {
         
         departureDatePicker.setupDate()
         inboundDatePicker.setupDate(timeInterval: departureMaxTimeInterval)
@@ -38,7 +38,7 @@ class TicketDates: BaseViewController {
         dateInboundLabel.isHidden = inboundDatePicker.isHidden
     }
     
-    fileprivate func checkDatePicker(d: DatePicker) -> Bool {
+    private func checkDatePicker(d: DatePicker) -> Bool {
         
         let handler: compareDatePickerСlosure = { [unowned self] in
             self.createAlert(titleText: "Ошибка", messageText: "Дата отправления должна быть не позже даты возвращения")

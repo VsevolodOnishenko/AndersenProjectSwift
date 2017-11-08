@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Ticket" representedClassName=".Ticket" syncable="YES">
+        <attribute name="addDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="airline" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="airlineLogo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="arrivalPlace" optional="YES" attributeType="String" syncable="YES"/>
@@ -12,6 +13,6 @@
         <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Ticket" positionX="-63" positionY="-18" width="128" height="178"/>
+        <element name="Ticket" positionX="-63" positionY="-18" width="128" height="195"/>
     </elements>
 </model>

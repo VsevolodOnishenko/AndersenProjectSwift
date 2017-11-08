@@ -16,9 +16,6 @@ class TicketPlaces: BaseViewController {
     @IBOutlet private weak var destinationPlaceTextField: TextField!
     @IBOutlet private weak var scrollView: UIScrollView!
     
-    private var responseData:NSMutableData?
-    private var dataTask:URLSessionDataTask?
-    
     var ticketRequestModel = TicketRequestModel()
     var placeFullNameModel = PlaceFullNameModel()
     private let segueIdentifierTicketDates = "toTicketDates"
@@ -29,8 +26,6 @@ class TicketPlaces: BaseViewController {
         
         originPlaceTextField.delegate = self
         destinationPlaceTextField.delegate = self
-        
-        //for autocompelete
         originPlaceTextField.configureTextField()
         destinationPlaceTextField.configureTextField()
         
@@ -48,7 +43,7 @@ class TicketPlaces: BaseViewController {
     
     //MARK: - Validation
     
-    func validationTextField(s: TextField) -> Bool {
+    private func validationTextField(s: TextField) -> Bool {
         
         let handler: checkTextFieldClosure = { [unowned self] in
             self.createAlert(titleText: "Ошибка", messageText: "Заполните поля правильно")
