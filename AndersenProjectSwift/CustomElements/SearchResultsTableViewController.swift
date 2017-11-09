@@ -5,42 +5,42 @@
 //  Created by macbook on 24.10.17.
 //  Copyright © 2017 Andersen. All rights reserved.
 //
-
 import UIKit
 import CoreData
 
 class SearchResultsTableViewController: UITableViewController {
     
-    var cellHeights: [CGFloat] = []
-    var expandedCellIndexPath: IndexPath?
+    var cellHeights: [CGFloat] = [] //del
+    var expandedCellIndexPath: IndexPath? //del
     var ticketRequestModel = TicketRequestModel()
     var placeFullNameModel = PlaceFullNameModel()
-    var customDataSource = CustomDataSource()
-    var ticketArray: [Any] = [] {
+    var customDataSource = CustomDataSource() //del
+    var ticketArray: [Any] = [] { //del
         didSet {
             setup()
             setupDataSourceParameters()
         }
     }
     
-    enum CellHeight: CGFloat {
+    enum CellHeight: CGFloat {     //del
         case closeCellHeight = 120
         case openCellHeight = 269
     }
     
-    let cellIdentifier = "ticketResultCell"
+    let cellIdentifier = "ticketResultCell" //del
+    var searchResultsViewModel = SearchResultViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = customDataSource
-        tableView.delegate = customDataSource
+        tableView.dataSource = customDataSource //viewModelDataSource
+        tableView.delegate = customDataSource   //viewModelDataSource
     }
     
     //TODO: ASK ABOUT TabBar selected index
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        detectData()
+        detectData() //viewModel.detectData
         tableView.reloadData()
     }
     
@@ -93,7 +93,7 @@ class SearchResultsTableViewController: UITableViewController {
         }
     }
     
-    //later clearing entity will be with gesture  
+    //later clearing entity will be with gesture
     
     @IBAction private func clearCoreData(_ sender: UIButton) {
         

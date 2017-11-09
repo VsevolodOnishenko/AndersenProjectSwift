@@ -16,10 +16,8 @@ class TicketPlaces: BaseViewController {
     @IBOutlet private weak var destinationPlaceTextField: TextField!
     @IBOutlet private weak var scrollView: UIScrollView!
     
-    var ticketRequestModel = TicketRequestModel()
-    var placeFullNameModel = PlaceFullNameModel()
     private let segueIdentifierTicketDates = "toTicketDates"
-    typealias checkTextFieldClosure = () -> ()
+    var ticketPlaceViewModel = PlaceViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,30 +39,14 @@ class TicketPlaces: BaseViewController {
         registerForKeyboardNotifications()
     }
     
-    //MARK: - Validation
-    
-    private func validationTextField(s: TextField) -> Bool {
-        
-        let handler: checkTextFieldClosure = { [unowned self] in
-            self.createAlert(titleText: "Ошибка", messageText: "Заполните поля правильно")
-        }
-        
-        guard s.text != nil else {
-            return false
-        }
-        
-        if (s.checkTextField(spellRule: s.isValidRule(), completion: handler)) {
-            return true
-        }
-        return false
-    }
-    
     // MARK: - Navigation
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         
-        if (validationTextField(s: destinationPlaceTextField) &&
-            validationTextField(s: originPlaceTextField)) {
+        if (destinationPlaceTextField.validationTextField(handler: {[unowned self] in
+            self.createAlert(titleText: "Ошибка", messageText: "Заполните поля правильно")})) &&
+            originPlaceTextField.validationTextField(handler: {[unowned self] in
+                self.createAlert(titleText: "Ошибка", messageText: "Заполните поля правильно")}){
             return true
         }
         return false
@@ -74,17 +56,18 @@ class TicketPlaces: BaseViewController {
         
         if segue.identifier == segueIdentifierTicketDates {
             
-            ticketRequestModel.originPlace = originPlaceTextField.iataCode
-            ticketRequestModel.destinationPlace = destinationPlaceTextField.iataCode
-            placeFullNameModel.fullNameDeparturePlace = originPlaceTextField.text
-            placeFullNameModel.fullNameArrivalPlace = destinationPlaceTextField.text
+            ticketPlaceViewModel.ticketRequestModel.originPlace = originPlaceTextField.iataCode
+            ticketPlaceViewModel.ticketRequestModel.destinationPlace = destinationPlaceTextField.iataCode
+            ticketPlaceViewModel.placeFullNameModel.fullNameDeparturePlace = originPlaceTextField.text
+            ticketPlaceViewModel.placeFullNameModel.fullNameArrivalPlace = destinationPlaceTextField.text
             
             guard let ticketDatesViewController = segue.destination as? TicketDates else {
                 print("Error")
                 return
             }
-            ticketDatesViewController.ticketRequestModel = ticketRequestModel
-            ticketDatesViewController.placeFullNameModel = placeFullNameModel
+            ticketDatesViewController.ticketDateViewModel.ticketRequestModel = ticketPlaceViewModel.ticketRequestModel
+            ticketDatesViewController.ticketDateViewModel.placeFullNameModel = ticketPlaceViewModel.placeFullNameModel
+            
         }
     }
 }
